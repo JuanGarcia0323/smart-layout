@@ -1,3 +1,1 @@
-export function helloAnything(thing: string): string {
-  return `Hello ${thing}!`;
-}
+export { ComponentLayout } from "./components/layout/component-layout";

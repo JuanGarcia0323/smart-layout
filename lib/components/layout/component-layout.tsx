@@ -1,12 +1,13 @@
-import { IPropsComponentLayout } from "../interfaces";
+import { IPropsComponentLayout } from "../../interfaces";
 import Logic from "./Logic";
-import GridLayout from "./grid-layout/grid-layout";
+import GridLayout from "../grid-layout/grid-layout";
+import styles from "./styles.module.css";
 
 export function ComponentLayout({ children }: IPropsComponentLayout) {
   const { layout, setLayout, elements, startLayout } = Logic({ children });
 
   return (
-    <div className="flex flex-col w-full h-full overflow-hidden">
+    <div className={styles["component-layout-parent-container"]}>
       <GridLayout
         layout={layout}
         setLayout={setLayout}

@@ -1,0 +1,17 @@
+.element-container-default-state {
+  overflow: hidden;
+  position: absolute;
+  border-radius: 0.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transition-duration: 500ms;
+}
+
+.element-container-fullscreen-happening {
+  display: none;
+}
+
+.element-container-dragging-happening {
+  cursor: pointer;
+}

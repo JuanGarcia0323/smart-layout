@@ -2,6 +2,7 @@ import { IPropsLayoutElement } from "../../interfaces";
 import { memo } from "react";
 import BorderSelector from "../border-selector/border-selector";
 import MenuBar from "../menu-bar/menu-bar";
+import styles from "./styles.module.css";
 
 const LayoutElement = memo(
   ({
@@ -21,14 +22,17 @@ const LayoutElement = memo(
       <div
         id={element.id.toString()}
         key={element.key}
-        className={`w-full max-w-full h-full flex relative 
-      ${element.orientation === "vertical" && "flex-col"} gap-2 rounded 
-      ${
-        dragging?.key === element.key &&
-        "shadow-inner-custom z-[100000000000] opacity-60 bg-primary cursor-pointer hover:bg-error hover:shadow-none"
-      } 
-      ${element.className} 
-       overflow-hidden transition-all duration-100 ease-in-out
+        className={`
+        ${styles["layout-element-default-state"]} 
+        ${
+          element.orientation === "vertical" &&
+          styles["layout-element-vertical"]
+        } 
+        ${
+          dragging?.key === element.key &&
+          styles["layout-element-dragging-state"]
+        } 
+        ${element.className} 
       `}
         onClick={(e) => {
           if (element.id === dragging?.id && cancelSelection) {

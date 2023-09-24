@@ -4,7 +4,7 @@ import {
   dynamicLayout,
   layoutElement,
   IElementContainer,
-} from "../interfaces";
+} from "../../interfaces";
 import { useState } from "react";
 
 const convertChildrenToLayout = (id: number): layoutElement => {

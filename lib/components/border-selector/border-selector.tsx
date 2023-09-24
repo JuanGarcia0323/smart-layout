@@ -1,5 +1,6 @@
 import { IPropsBorderSelector } from "../../interfaces";
 import Logic from "./Logic";
+import styles from "./styles.module.css";
 
 const BorderSelector = ({
   action,
@@ -10,9 +11,10 @@ const BorderSelector = ({
 
   return (
     <span
-      className={`${handlePosition(
-        position
-      )} absolute opacity-70 transition-all duration-150 ease-in-out cursor-pointer z-[10000] rounded hover:shadow-inner-custom ${className}`}
+      className={`
+      ${handlePosition(position)} 
+      ${styles["border-selector-default"]} 
+      ${className}`}
       onClick={(e) => {
         e.stopPropagation();
         action();

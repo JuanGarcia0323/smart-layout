@@ -1,0 +1,24 @@
+.grid-layout-main-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-layout-parent-grid {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.grid-layout-parent-grid::-webkit-scrollbar {
+  display: none;
+}

@@ -4,3 +4,4 @@ export * from "./GridLayout";
 export * from "./Layout";
 export * from "./LayoutElement";
 export * from "./Menubar";
+export * from "./Icon";

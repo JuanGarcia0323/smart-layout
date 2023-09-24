@@ -1,13 +1,15 @@
-import {
-  CloseOutlined,
-  DragOutlined,
-  FullscreenOutlined,
-  ToTopOutlined,
-  SwapOutlined,
-} from "@ant-design/icons";
-import Button from "@components/button/Button";
+// import {
+//   CloseOutlined,
+//   DragOutlined,
+//   FullscreenOutlined,
+//   ToTopOutlined,
+//   SwapOutlined,
+// } from "@ant-design/icons";
+// import Button from "@components/button/Button";
+import Fullscreen from "../../icons/Fullscreen";
 import { IPropsMenuBar } from "../../interfaces";
-import { Tooltip } from "antd";
+// import { Tooltip } from "antd";
+import styles from "./styles.module.css";
 
 const MenuBar = ({
   children,
@@ -22,64 +24,69 @@ const MenuBar = ({
   disableMoveToTheTop,
   dragging,
 }: IPropsMenuBar) => {
-  const buttonStyle =
-    "w-10 h-8 text-center z-[100000] bg-background border-none ";
   return (
     <div className={`w-full absolute ${className}`}>
       <div className="w-full h-full flex flex-wrap overflow-hidden justify-end items-center">
         {children}
         {!!onClickMove && (
-          <Tooltip
-            placement="bottom"
-            title="Move and resize element"
-            mouseEnterDelay={0.7}
+          // <Tooltip
+          //   placement="bottom"
+          //   title="Move and resize element"
+          //   mouseEnterDelay={0.7}
+          // >
+          <button
+            className={`${styles["menubar-button-swap"]} ${styles["menubar-button-default"]}`}
+            onClick={onClickMove}
+            disabled={disableMove}
+            // type="primary"
+            // icon={dragging ? <SwapOutlined /> : <DragOutlined />}
           >
-            <Button
-              className={` rounded-none rounded-bl ${buttonStyle}`}
-              onClick={onClickMove}
-              disabled={disableMove}
-              type="primary"
-              icon={dragging ? <SwapOutlined /> : <DragOutlined />}
-            />
-          </Tooltip>
+            {dragging ? <Fullscreen /> : <Fullscreen />}
+          </button>
+          // </Tooltip>
         )}
         {!!onClickFullScreen && (
-          <Tooltip placement="bottom" title="Fullscreen" mouseEnterDelay={0.7}>
-            <Button
-              className={`rounded-none ${buttonStyle}`}
-              onClick={onClickFullScreen}
-              disabled={disableFullScreen}
-              icon={<FullscreenOutlined />}
-            />
-          </Tooltip>
+          // <Tooltip placement="bottom" title="Fullscreen" mouseEnterDelay={0.7}>
+          <button
+            className={styles["menubar-button-default"]}
+            onClick={onClickFullScreen}
+            disabled={disableFullScreen}
+            // icon={<FullscreenOutlined />}
+          >
+            <Fullscreen />
+          </button>
+          // </Tooltip>
         )}
         {!!moveToTheTop && (
-          <Tooltip
-            placement="bottom"
-            title="Separate element"
-            mouseEnterDelay={0.7}
+          // <Tooltip
+          //   placement="bottom"
+          //   title="Separate element"
+          //   mouseEnterDelay={0.7}
+          // >
+          <button
+            className={styles["menubar-button-default"]}
+            onClick={moveToTheTop}
+            disabled={disableMoveToTheTop}
+            // icon={<FullscreenOutlined />}
           >
-            <Button
-              className={`rounded-none ${buttonStyle}`}
-              onClick={moveToTheTop}
-              disabled={disableMoveToTheTop}
-              icon={<ToTopOutlined />}
-            />
-          </Tooltip>
+            <Fullscreen />
+          </button>
+          // </Tooltip>
         )}
         {!!onClickClose && (
-          <Tooltip
-            placement="bottom"
-            title="Remove element"
-            mouseEnterDelay={0.7}
+          // <Tooltip
+          //   placement="bottom"
+          //   title="Remove element"
+          //   mouseEnterDelay={0.7}
+          // >
+          <button
+            className={`${styles["menubar-button-remove"]} ${styles["menubar-button-default"]}`}
+            onClick={onClickClose}
+            disabled={disableClose}
           >
-            <Button
-              className={` text-red-500  rounded-l-none rounded-r-none ${buttonStyle}`}
-              onClick={onClickClose}
-              disabled={disableClose}
-              icon={<CloseOutlined />}
-            />
-          </Tooltip>
+            <Fullscreen />
+          </button>
+          // </Tooltip>
         )}
       </div>
     </div>

@@ -1,10 +1,9 @@
 import { IPropsGridLayout, dynamicLayout } from "../../interfaces";
-import { DeleteOutlined } from "@ant-design/icons";
 import { useCallback } from "react";
 import LayoutElement from "../layout-element/layout-element";
 import Logic from "./Logic";
 import ElementContainer from "../element-container/element-container";
-import { Popconfirm } from "antd";
+import styles from "./styles.module.css";
 
 const GridLayout = ({
   layout,
@@ -61,27 +60,8 @@ const GridLayout = ({
   );
 
   return (
-    <div className="w-full h-full relative overflow-hidden no-scrollbar">
-      <Popconfirm
-        placement="left"
-        title="Delete saved layout?"
-        mouseEnterDelay={0.3}
-        onConfirm={() => {
-          localStorage.removeItem("customLayout");
-          startLayout();
-        }}
-      >
-        <div
-          className="absolute w-20 rounded-full gap-2 h-20 -bottom-10 -right-10 z-[10000000000000] flex items-center justify-center overflow-hidden bg-error text-transparent  hover:text-white duration-300 transition-all hover:bottom-0 hover:right-0 cursor-pointer
-          "
-        >
-          <DeleteOutlined className="w-full text-inherit text-center flex items-center justify-center text-xl transition-all duration-150"></DeleteOutlined>
-        </div>
-      </Popconfirm>
-      <div
-        className={`flex flex-col md:flex-row h-full rounded w-full overflow-auto gap-2 no-scrollbar `}
-        id="parent-grid"
-      >
+    <div className={styles["grid-layout-main-container"]}>
+      <div className={styles["grid-layout-parent-grid"]} id="parent-grid">
         {elements.map((element) => {
           return (
             <ElementContainer

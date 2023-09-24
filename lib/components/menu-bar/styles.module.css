@@ -1,0 +1,15 @@
+.menubar-button-default {
+  border-style: none;
+  width: 2.5rem;
+  height: 2rem;
+  text-align: center;
+  border-radius: 0;
+}
+
+.menubar-button-swap {
+  border-bottom-left-radius: 0.25rem;
+}
+
+.menubar-button-remove {
+  color: #ef4444;
+}
