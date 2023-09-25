@@ -8,9 +8,9 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   opacity: 0.7;
-
-  :hover {
-    box-shadow: "inset 0px 0px 20px 4px rgba(23,0,3,.3)";
+  z-index: 3;
+  &:hover {
+    box-shadow: inset 0px 0px 20px 4px rgba(23, 0, 3, 0.3);
   }
 }
 

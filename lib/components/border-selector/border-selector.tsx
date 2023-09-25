@@ -6,14 +6,16 @@ const BorderSelector = ({
   action,
   className,
   position,
+  customStyle,
 }: IPropsBorderSelector) => {
   const { handlePosition } = Logic();
 
   return (
     <span
+      style={customStyle}
       className={`
       ${handlePosition(position)} 
-      ${styles["border-selector-default"]} 
+      ${styles["border-selector-default"]}
       ${className}`}
       onClick={(e) => {
         e.stopPropagation();

@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface IPropsMenuBar {
   children?: ReactNode;
-  className?: string;
   onClickFullScreen?: () => void;
   onClickClose?: () => void;
   onClickMove?: () => void;

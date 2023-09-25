@@ -6,14 +6,13 @@
 //   SwapOutlined,
 // } from "@ant-design/icons";
 // import Button from "@components/button/Button";
-import Fullscreen from "../../icons/Fullscreen";
+import { Fullscreen, Close, Move, Swap, MovetoTheTop } from "../../icons/index";
 import { IPropsMenuBar } from "../../interfaces";
 // import { Tooltip } from "antd";
 import styles from "./styles.module.css";
 
 const MenuBar = ({
   children,
-  className,
   onClickClose,
   onClickMove,
   onClickFullScreen,
@@ -25,8 +24,8 @@ const MenuBar = ({
   dragging,
 }: IPropsMenuBar) => {
   return (
-    <div className={`w-full absolute ${className}`}>
-      <div className="w-full h-full flex flex-wrap overflow-hidden justify-end items-center">
+    <div className={styles["menubar-container"]}>
+      <div className={styles["menubar"]}>
         {children}
         {!!onClickMove && (
           // <Tooltip
@@ -41,7 +40,11 @@ const MenuBar = ({
             // type="primary"
             // icon={dragging ? <SwapOutlined /> : <DragOutlined />}
           >
-            {dragging ? <Fullscreen /> : <Fullscreen />}
+            {dragging ? (
+              <Swap className={styles["menubar-button-swap"]} />
+            ) : (
+              <Move className={styles["menubar-button-swap"]} />
+            )}
           </button>
           // </Tooltip>
         )}
@@ -69,7 +72,7 @@ const MenuBar = ({
             disabled={disableMoveToTheTop}
             // icon={<FullscreenOutlined />}
           >
-            <Fullscreen />
+            <MovetoTheTop />
           </button>
           // </Tooltip>
         )}
@@ -84,7 +87,7 @@ const MenuBar = ({
             onClick={onClickClose}
             disabled={disableClose}
           >
-            <Fullscreen />
+            <Close />
           </button>
           // </Tooltip>
         )}

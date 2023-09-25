@@ -1,5 +1,5 @@
-import { direction } from './Reusable';
-import { dynamicLayout, layoutElement } from './GridLayout';
+import { direction } from ".";
+import { dynamicLayout, layoutElement } from "./GridLayout";
 
 interface IPropsLayoutElement {
   element: layoutElement;

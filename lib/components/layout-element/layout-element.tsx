@@ -96,28 +96,28 @@ const LayoutElement = memo(
           dragging.parentId !== element.id && (
             <>
               <BorderSelector
-                className=" h-[4%] z-[11000]"
+                customStyle={{ height: "4%", zIndex: 4 }}
                 action={() => {
                   moveELement && moveELement(dragging, element, "top");
                 }}
                 position="top"
               />
               <BorderSelector
-                className=" h-[4%] z-[11000]"
+                customStyle={{ height: "4%", zIndex: 4 }}
                 action={() => {
                   moveELement && moveELement(dragging, element, "bottom");
                 }}
                 position="bottom"
               />
               <BorderSelector
-                className="w-[4%] z-[11000]"
+                customStyle={{ width: "4%", zIndex: 4 }}
                 action={() => {
                   moveELement && moveELement(dragging, element, "left");
                 }}
                 position="left"
               />
               <BorderSelector
-                className="w-[4%] z-[11000]"
+                customStyle={{ width: "4%", zIndex: 4 }}
                 action={() => {
                   moveELement && moveELement(dragging, element, "right");
                 }}

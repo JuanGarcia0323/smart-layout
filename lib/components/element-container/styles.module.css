@@ -6,6 +6,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
   transition-duration: 500ms;
+  z-index: 2;
 }
 
 .element-container-fullscreen-happening {
