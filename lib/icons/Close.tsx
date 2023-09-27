@@ -7,7 +7,7 @@ export const Close = ({ className }: IPropsIcon) => {
       height="24"
       viewBox="0 -960 960 960"
       width="24"
-      className={className}
+      className={`${className} icon`}
     >
       <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
     </svg>

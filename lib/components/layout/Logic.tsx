@@ -36,6 +36,8 @@ const Logic = ({ children }: IPropsComponentLayout) => {
 
   const startLayout = useCallback(() => {
     if (!children) {
+      setLayout([]);
+      setElements([]);
       return;
     }
     if (!Array.isArray(children)) {
@@ -46,6 +48,9 @@ const Logic = ({ children }: IPropsComponentLayout) => {
     const newLayout: dynamicLayout = [];
     const newElements: IElementContainer[] = [];
     children.forEach((element, i) => {
+      if (!element) {
+        return;
+      }
       newLayout.push(convertChildrenToLayout(i));
       newElements.push(convertChildrenToElementContainer(element, i));
     });
