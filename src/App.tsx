@@ -46,14 +46,38 @@ function App() {
       >
         <ComponentLayout>
           <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "gray" }} />
+          <div
+            style={{ width: "100%", height: "100%", background: "blue" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "orange" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
+          <div
+            style={{ width: "100%", height: "100%", background: "gray" }}
+            className="test"
+          />
         </ComponentLayout>
       </div>
     </div>

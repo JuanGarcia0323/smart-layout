@@ -1,10 +1,5 @@
 .layout-element-default-state {
   overflow: hidden;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  transition-duration: 100ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   position: relative;
   width: 100%;

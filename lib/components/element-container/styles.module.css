@@ -7,6 +7,12 @@
   transition-duration: 300ms;
   transition-duration: 500ms;
   z-index: 2;
+
+  & > * {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-perspective: 1000;
+  }
 }
 
 .element-container-fullscreen-happening {
