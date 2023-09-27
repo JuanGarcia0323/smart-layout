@@ -14,12 +14,10 @@ const Logic = ({ id }: IElementContainer) => {
       const { x: xGrid, y: yGrid } = grid.getBoundingClientRect();
       const { clientHeight, clientWidth } = element;
       const { x: xElement, y: yElement } = element.getBoundingClientRect();
-      const realX = xElement - xGrid;
-      const realY = yElement - yGrid;
-      const finalY = realY;
-      const finalX = realX;
+      const realX = Math.round(xElement - xGrid);
+      const realY = Math.round(yElement - yGrid);
 
-      currentElement.style.transform = `translateY(${finalY}px) translateX(${finalX}px)`;
+      currentElement.style.transform = `translateY(${realY}px) translateX(${realX}px)`;
       currentElement.style.width = `${clientWidth}px`;
       currentElement.style.height = `${clientHeight}px`;
     };
