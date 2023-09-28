@@ -1,4 +1,4 @@
-import { direction } from ".";
+import { direction, posibleMovement } from ".";
 import { dynamicLayout, layoutElement } from "./GridLayout";
 
 interface IPropsLayoutElement {
@@ -17,6 +17,8 @@ interface IPropsLayoutElement {
   cancelSelection?: () => void;
   childrens?: Array<JSX.Element>;
   fullScreen?: layoutElement;
+  hideMenubar?: boolean;
+  limitMovement?: posibleMovement;
 }
 
 export type { IPropsLayoutElement };

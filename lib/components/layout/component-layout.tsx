@@ -25,6 +25,7 @@ export function ComponentLayout({
         elements={elements}
         startLayout={startLayout}
         limitMovement={limitMovement}
+        hideMenubar={hideMenuBar}
       />
     </div>
   );

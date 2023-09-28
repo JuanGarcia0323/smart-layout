@@ -5,7 +5,7 @@ type posibleMovement = "horizontal" | "vertical";
 interface IPropsComponentLayout {
   children: ReactNode;
   id: string;
-  hideMenuBar: boolean;
+  hideMenuBar?: boolean;
   limitMovement?: posibleMovement;
 }
 

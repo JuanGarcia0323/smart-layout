@@ -23,6 +23,7 @@ interface IPropsGridLayout {
   startLayout: () => void;
   layoutId: string;
   limitMovement?: posibleMovement;
+  hideMenubar?: boolean;
 }
 
 type positionLayout = Array<position>;

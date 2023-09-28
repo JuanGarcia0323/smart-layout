@@ -12,6 +12,7 @@ const GridLayout = ({
   startLayout,
   layoutId,
   limitMovement,
+  hideMenubar,
 }: IPropsGridLayout) => {
   const {
     handleSwitch,
@@ -48,6 +49,8 @@ const GridLayout = ({
             onClickMove={() => handleSwitch(element)}
             cancelSelection={cancelSelection}
             moveToTheTop={moveToTheTop}
+            limitMovement={limitMovement}
+            hideMenubar={hideMenubar}
           />
         );
       });
@@ -59,6 +62,7 @@ const GridLayout = ({
       handleFullScreen,
       handleMove,
       handleSwitch,
+      limitMovement,
       moveToTheTop,
     ]
   );
