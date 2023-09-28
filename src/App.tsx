@@ -42,9 +42,11 @@ function App() {
           width: "100%",
           height: "95%",
           overflow: "hidden",
+          display: "flex",
+          gap: 8,
         }}
       >
-        <ComponentLayout>
+        <ComponentLayout id="starting-layout">
           <div style={{ width: "100%", height: "100%", background: "gray" }} />
           <div
             style={{ width: "100%", height: "100%", background: "blue" }}
@@ -54,28 +56,14 @@ function App() {
             style={{ width: "100%", height: "100%", background: "orange" }}
             className="test"
           />
+
           <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
+            style={{ width: "100%", height: "100%", background: "orange" }}
             className="test"
           />
+
           <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
-            className="test"
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
-            className="test"
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
-            className="test"
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
-            className="test"
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "gray" }}
+            style={{ width: "100%", height: "100%", background: "orange" }}
             className="test"
           />
         </ComponentLayout>

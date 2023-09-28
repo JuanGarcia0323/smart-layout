@@ -157,22 +157,22 @@ const balance = (layout: dynamicLayout): dynamicLayout => {
   return newLayout as dynamicLayout;
 };
 
-const Logic = ({ layout, setLayout }: IPropsGridLayout) => {
+const saveLayout = (layout: dynamicLayout, layoutId: string) => {
+  const customLayot = JSON.stringify(layout);
+  localStorage.setItem(layoutId, customLayot);
+};
+
+const Logic = ({ layout, setLayout, layoutId }: IPropsGridLayout) => {
   const [dragging, setDragging] = useState<layoutElement>();
   const [fullScreen, setFullScreen] = useState<layoutElement>();
-
-  const saveLayout = (layout: dynamicLayout) => {
-    const customLayot = JSON.stringify(layout);
-    localStorage.setItem("customLayout", customLayot);
-  };
 
   const setter = useCallback(
     (newLayout: dynamicLayout) => {
       const balancedLayout = balance(newLayout);
-      saveLayout(balancedLayout);
+      saveLayout(balancedLayout, layoutId);
       setLayout(balancedLayout);
     },
-    [setLayout]
+    [layoutId, setLayout]
   );
 
   const handleSwitch = useCallback(
@@ -180,13 +180,13 @@ const Logic = ({ layout, setLayout }: IPropsGridLayout) => {
       if (dragging) {
         setDragging(undefined);
         const switchedElement = switchElement(layout, element, dragging);
-        saveLayout(switchedElement);
+        saveLayout(switchedElement, layoutId);
         setLayout(switchedElement);
         return;
       }
       setDragging(element);
     },
-    [dragging, layout, setLayout]
+    [dragging, layout, layoutId, setLayout]
   );
 
   const handleMove = useCallback(

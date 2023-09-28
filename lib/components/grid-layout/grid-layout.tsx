@@ -10,6 +10,8 @@ const GridLayout = ({
   setLayout,
   elements,
   startLayout,
+  layoutId,
+  limitMovement,
 }: IPropsGridLayout) => {
   const {
     handleSwitch,
@@ -24,6 +26,8 @@ const GridLayout = ({
     setLayout,
     elements,
     startLayout,
+    layoutId,
+    limitMovement,
   });
 
   const unfoldData = useCallback(
@@ -61,7 +65,7 @@ const GridLayout = ({
 
   return (
     <div className={styles["grid-layout-main-container"]}>
-      <div className={styles["grid-layout-parent-grid"]} id="parent-grid">
+      <div className={styles["grid-layout-parent-grid"]} id={layoutId}>
         {elements.map((element) => {
           return (
             <ElementContainer

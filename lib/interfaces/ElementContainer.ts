@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { layoutElement } from './GridLayout';
+import { ReactNode } from "react";
+import { layoutElement } from "./GridLayout";
 
 interface IElementContainer {
   id: string;
@@ -8,6 +8,7 @@ interface IElementContainer {
   fullScreen?: layoutElement;
   dragging?: layoutElement;
   cancelSelection?: () => void;
+  layoutId: string;
 }
 
 export type { IElementContainer };

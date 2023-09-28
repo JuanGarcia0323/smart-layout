@@ -1,3 +1,4 @@
+import { posibleMovement } from ".";
 import { IElementContainer } from "./ElementContainer";
 
 interface position {
@@ -20,6 +21,8 @@ interface IPropsGridLayout {
   layout: dynamicLayout;
   setLayout: (layout: dynamicLayout) => void;
   startLayout: () => void;
+  layoutId: string;
+  limitMovement?: posibleMovement;
 }
 
 type positionLayout = Array<position>;

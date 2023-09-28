@@ -20,7 +20,7 @@ const LayoutElement = memo(
   }: IPropsLayoutElement) => {
     return (
       <div
-        id={element.id.toString()}
+        id={element.key}
         key={element.key}
         className={`
         ${styles["layout-element-default-state"]} 

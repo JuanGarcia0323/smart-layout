@@ -1,12 +1,12 @@
 import { useLayoutEffect, useRef } from "react";
 import { IElementContainer } from "../../interfaces";
 
-const Logic = ({ id }: IElementContainer) => {
+const Logic = ({ id, layoutId }: IElementContainer) => {
   const ref = useRef<HTMLDivElement>();
   useLayoutEffect(() => {
     const move = () => {
       const element = document.getElementById(id);
-      const grid = document.getElementById("parent-grid");
+      const grid = document.getElementById(layoutId);
       const currentElement = ref.current;
       if (!element || !currentElement || !grid) {
         return;

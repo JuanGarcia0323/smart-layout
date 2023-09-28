@@ -7,10 +7,13 @@ import {
 } from "../../interfaces";
 import { useState } from "react";
 
-const convertChildrenToLayout = (id: number): layoutElement => {
+const convertChildrenToLayout = (
+  id: number,
+  layoutId: string
+): layoutElement => {
   const newObject: layoutElement = {
     id: id,
-    key: id.toString(),
+    key: id.toString() + layoutId,
     orientation: "horizontal",
     parentId: -1,
   };
@@ -20,17 +23,19 @@ const convertChildrenToLayout = (id: number): layoutElement => {
 
 const convertChildrenToElementContainer = (
   children: ReactNode,
-  id: number
+  id: number,
+  layoutId: string
 ): IElementContainer => {
   const newObject: IElementContainer = {
     element: children,
     key: (id * 2).toString(),
-    id: id.toString(),
+    id: id.toString() + layoutId,
+    layoutId,
   };
   return newObject;
 };
 
-const Logic = ({ children }: IPropsComponentLayout) => {
+const Logic = ({ children, id }: IPropsComponentLayout) => {
   const [layout, setLayout] = useState<dynamicLayout>([]);
   const [elements, setElements] = useState<IElementContainer[]>([]);
 
@@ -41,8 +46,8 @@ const Logic = ({ children }: IPropsComponentLayout) => {
       return;
     }
     if (!Array.isArray(children)) {
-      setElements([convertChildrenToElementContainer(children, 1)]);
-      setLayout([convertChildrenToLayout(1)]);
+      setElements([convertChildrenToElementContainer(children, 1, id)]);
+      setLayout([convertChildrenToLayout(1, id)]);
       return;
     }
     const newLayout: dynamicLayout = [];
@@ -51,19 +56,19 @@ const Logic = ({ children }: IPropsComponentLayout) => {
       if (!element) {
         return;
       }
-      newLayout.push(convertChildrenToLayout(i));
-      newElements.push(convertChildrenToElementContainer(element, i));
+      newLayout.push(convertChildrenToLayout(i, id));
+      newElements.push(convertChildrenToElementContainer(element, i, id));
     });
     setLayout(newLayout);
     setElements(newElements);
-  }, [children]);
+  }, [children, id]);
 
   useEffect(() => {
     startLayout();
   }, [children, startLayout]);
 
   useEffect(() => {
-    const storedLayout = localStorage.getItem("customLayout");
+    const storedLayout = localStorage.getItem(id);
     if (!storedLayout) {
       return;
     }
@@ -77,11 +82,11 @@ const Logic = ({ children }: IPropsComponentLayout) => {
         originalElementLayout.length !== children.length) ||
       (originalElementLayout.length > 1 && !Array.isArray(children))
     ) {
-      localStorage.removeItem("customLayout");
+      localStorage.removeItem(id);
       return;
     }
     setLayout(customLayot);
-  }, [children]);
+  }, [children, id]);
 
   return { layout, setLayout, elements, startLayout };
 };

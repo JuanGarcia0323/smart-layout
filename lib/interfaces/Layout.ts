@@ -1,7 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+
+type posibleMovement = "horizontal" | "vertical";
 
 interface IPropsComponentLayout {
   children: ReactNode;
+  id: string;
+  hideMenuBar: boolean;
+  limitMovement?: posibleMovement;
 }
 
-export type { IPropsComponentLayout };
+export type { IPropsComponentLayout, posibleMovement };

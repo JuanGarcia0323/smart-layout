@@ -12,7 +12,7 @@ const ElementContainer = (props: IElementContainer) => {
       ${styles["element-container-default-state"]}
       ${
         fullScreen &&
-        fullScreen.id.toString() !== props.id &&
+        fullScreen.key !== props.id &&
         styles["element-container-fullscreen-happening"]
       } 
       ${dragging && dragging.id.toString() === props.id && "cursor-pointer"}
