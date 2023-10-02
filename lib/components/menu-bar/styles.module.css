@@ -14,7 +14,7 @@
 }
 
 .menubar-button-default {
-  background: rgba(214, 214, 214, 0.25);
+  background: rgba(214, 214, 214, 0.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   fill: white;
@@ -52,10 +52,10 @@
 .menubar-button-swap {
   border-bottom-left-radius: 0.25rem;
   &:hover {
-    background: #ff4500;
+    background: #2f3338;
     & > svg {
       fill: white;
     }
   }
-  fill: #ff4500;
+  fill: #2f3338;
 }

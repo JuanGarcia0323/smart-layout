@@ -62,6 +62,7 @@ const GridLayout = ({
       handleFullScreen,
       handleMove,
       handleSwitch,
+      hideMenubar,
       limitMovement,
       moveToTheTop,
     ]

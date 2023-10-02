@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { ComponentLayout } from "../lib/main";
 function App() {
-  const [elements, setElements] = useState<number[]>([]);
-  const addElement = () => {
-    setElements([...elements, new Date().getTime()]);
-  };
+  const [show, setShow] = useState<boolean>(false);
 
   return (
     <div
@@ -25,7 +22,7 @@ function App() {
         }}
       >
         <button
-          onClick={addElement}
+          onClick={() => setShow(!show)}
           style={{
             background: "transparent",
             border: "1px solid gray",
@@ -34,7 +31,7 @@ function App() {
             cursor: "pointer",
           }}
         >
-          Add Element
+          Hide menu bar
         </button>
       </div>
       <div
@@ -46,25 +43,18 @@ function App() {
           gap: 8,
         }}
       >
-        <ComponentLayout id="starting-layout">
+        <ComponentLayout id="starting-layout" hideMenuBar={false}>
           <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div
-            style={{ width: "100%", height: "100%", background: "blue" }}
-            className="test"
-          />
+          <div style={{ width: "100%", height: "100%", background: "blue" }} />
           <div
             style={{ width: "100%", height: "100%", background: "orange" }}
-            className="test"
           />
 
           <div
             style={{ width: "100%", height: "100%", background: "orange" }}
-            className="test"
           />
-
           <div
             style={{ width: "100%", height: "100%", background: "orange" }}
-            className="test"
           />
         </ComponentLayout>
       </div>

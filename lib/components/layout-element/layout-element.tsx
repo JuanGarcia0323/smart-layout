@@ -20,6 +20,7 @@ const LayoutElement = memo(
     hideMenubar,
     limitMovement,
   }: IPropsLayoutElement) => {
+    console.log(childrens);
     return (
       <div
         id={element.key}

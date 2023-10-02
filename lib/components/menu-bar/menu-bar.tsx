@@ -1,14 +1,5 @@
-// import {
-//   CloseOutlined,
-//   DragOutlined,
-//   FullscreenOutlined,
-//   ToTopOutlined,
-//   SwapOutlined,
-// } from "@ant-design/icons";
-// import Button from "@components/button/Button";
 import { Fullscreen, Close, Move, Swap, MovetoTheTop } from "../../icons/index";
 import { IPropsMenuBar } from "../../interfaces";
-// import { Tooltip } from "antd";
 import styles from "./styles.module.css";
 
 const MenuBar = ({
