@@ -8,6 +8,28 @@
   "files": [
     "dist"
   ],
+  "keywords": [    
+    "React",
+    "FlexiLayout",
+    "Adaptive layout",
+    "Dynamic resizing",
+    "Drag-n-Drop",
+    "User interface",
+    "Container adjustment",
+    "Resizable components",
+    "High performance",
+    "Seamless integration",
+    "UI enhancement",
+    "Real-time repositioning",
+    "Layout experience",
+    "Component design",
+    "Content optimization",
+    "Intuitive handles",
+    "Element organization",
+    "Layout library",
+    "User empowerment",
+    "Interactive design"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build",
