@@ -34,4 +34,4 @@ import { ComponentLayout } from "smart-layout";
 
 ![Alt Text](ezgif.com-video-to-gif.gif)
 
-### [PLAY WITH IT ON STACKBLITZ](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
+### ⚡ [PLAY WITH IT ON STACKBLITZ](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx) ⚡
