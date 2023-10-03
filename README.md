@@ -1,8 +1,9 @@
 # React Smart-Layout
 
-React FlexiLayout is a cutting-edge React library designed to effortlessly generate adaptive layouts that fit perfectly into any container. Empower your users by allowing them to swiftly reorganize elements and resize them to their needs.
+React Smart-Layout is a cutting-edge React library designed to effortlessly generate adaptive layouts that fit perfectly into any container. Empower your users by allowing them to swiftly reorganize elements and resize them to their needs.
 
 ## 🌟 Features:
+
 - **Adaptive**: Automatically adjusts content to fit any container size.
 - **Animated**: Amazing animations for any element on the layout.
 - **Movable**: Easy-to-use interface that lets users reposition elements in real-time.
