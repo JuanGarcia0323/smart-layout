@@ -35,3 +35,16 @@ import { ComponentLayout } from "smart-layout";
 ![Alt Text](ezgif.com-video-to-gif.gif)
 
 ### ⚡ [PLAY WITH IT ON STACKBLITZ](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx) ⚡
+
+## 📅 Coming soon:
+
+- [ ] Have custom styles
+- [ ] Default layout
+- [ ] Scroll on mobile
+- [ ] Add callbacks to all buttons
+- [ ] Find a way to return callbacks to manage the layout: e.g., startLayout()
+- [ ] Dismount only the element that was hidden and preserve the layout order
+- [ ] Minimize
+- [ ] Resize
+- [ ] Group layouts and move groups
+- [ ] Alt tab to navigate between containers and open the selected one in full-screen.
