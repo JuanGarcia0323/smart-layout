@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { ComponentLayout } from "../lib/main";
 function App() {
-  const [show, setShow] = useState<boolean>(false);
-
   return (
     <div
       style={{
@@ -14,42 +11,19 @@ function App() {
     >
       <div
         style={{
-          height: "5%",
           width: "100%",
-          display: "flex",
-          padding: "0.5rem",
-          border: "1px solid white",
-        }}
-      >
-        <button
-          onClick={() => setShow(!show)}
-          style={{
-            background: "transparent",
-            border: "1px solid gray",
-            borderRadius: "0.3rem",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          Hide menu bar
-        </button>
-      </div>
-      <div
-        style={{
-          width: "100%",
-          height: "95%",
+          height: "100%",
           overflow: "hidden",
           display: "flex",
           gap: 8,
         }}
       >
-        <ComponentLayout id="starting-layout" hideMenuBar={false}>
+        <ComponentLayout id="starting-layout">
           <div style={{ width: "100%", height: "100%", background: "gray" }} />
           <div style={{ width: "100%", height: "100%", background: "blue" }} />
           <div
             style={{ width: "100%", height: "100%", background: "orange" }}
           />
-
           <div
             style={{ width: "100%", height: "100%", background: "orange" }}
           />
