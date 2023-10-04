@@ -4,11 +4,13 @@ React Smart-Layout is a cutting-edge React library designed to effortlessly gene
 
 ## 🌟 Features:
 
+- **State Preservation**: Maintains the state of components even after repositioning, ensuring a consistent user experience.
+- **Persistent**: Layout: The layout remains intact even after page reload, offering users a reliable design continuity.
 - **Adaptive**: Automatically adjusts content to fit any container size.
 - **Animated**: Amazing animations for any element on the layout.
 - **Movable**: Easy-to-use interface that lets users reposition elements in real-time.
 - **Resizable Components**: Dynamically adjust the size of your components with intuitive resizing handles.
-- **Highly Performant**: Optimized for peak performance to ensure smooth user interactions, even with a large number of components.
+- **Highly Performant**: Optimized for peak performance to ensure smooth user interactions, even with a large number of components (don't be afraid to test it with grids and entire pages).
 - **Seamless Integration**: Designed from the ground up to be easily integrated into any React project, no matter the size or complexity.
 
 Give your users the ultimate layout experience and elevate your UI with React Smart-Layout! 🌐
