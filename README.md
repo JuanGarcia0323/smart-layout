@@ -17,8 +17,8 @@ Give your users the ultimate layout experience and elevate your UI with React Sm
 
 ## Example:
 
-It's really easy to use you just need to import the `ComponentLayout`
-and add your childrens
+It's really easy to use, you just need to import the `ComponentLayout`
+and add your children
 
 ```typescript
 import { ComponentLayout } from "smart-layout";
