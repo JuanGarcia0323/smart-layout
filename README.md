@@ -5,7 +5,7 @@ React Smart-Layout is a cutting-edge React library designed to effortlessly gene
 ## 🌟 Features:
 
 - **State Preservation**: Maintains the state of components even after repositioning, ensuring a consistent user experience.
-- **Persistent**: Layout: The layout remains intact even after page reload, offering users a reliable design continuity.
+- **Persistent Layout**: The layout remains intact even after page reload, offering users a reliable design continuity.
 - **Adaptive**: Automatically adjusts content to fit any container size.
 - **Animated**: Amazing animations for any element on the layout.
 - **Movable**: Easy-to-use interface that lets users reposition elements in real-time.
@@ -36,9 +36,29 @@ import { ComponentLayout } from "smart-layout";
 
 ![Alt Text](ezgif.com-video-to-gif.gif)
 
-### ⚡ [PLAY WITH IT ON STACKBLITZ](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx) ⚡
+# 🚀 **Experience Smart-layout in Real-time!** 🚀
 
-## 📅 Coming soon:
+Dive into the interactive world of `Smart-layout` without any setup hassles! We've set up a live demo for you on StackBlitz. It's the perfect platform to experiment, tweak, and see our library in action.
+
+Whether you're curious about its capabilities or just want to play around, StackBlitz offers an immediate, hands-on experience.
+
+⚡ [Try Smart-layout on StackBlitz Now!](#https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
+
+
+# 👨‍💻 **Support a Passionate Young Developer!** 👨‍💻
+
+Hello! I'm a 20-year-old software developer hailing from the vibrant landscapes of Argentina. My passion lies in bringing innovative ideas to life through my side projects. However, as much as I love what I do, it's a challenge to sustain and grow without some support.
+
+Your donation won't just be a contribution; it will be a lifeline that enables me to continue dedicating time, energy, and creativity to these projects that I deeply care about. With your generous help, I can keep my dream alive, nurture my projects, and maybe one day, touch lives across the globe with my creations.
+
+💡 **Your support means more than you can imagine.** Every bit counts, and your gesture will play a pivotal role in fueling my journey forward. Let's build the future of software together!
+
+<a href="https://www.buymeacoffee.com/juanemilio" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href='https://matecito.co/JuanEmilio03' rel='noopener' target='_blank'><img srcset='https://www.matecito.co/public/button_8.png 1x, https://www.matecito.co/public/button_8_2x.png 2x, https://www.matecito.co/public/button_8_3.75x.png 3.75x' src='https://www.matecito.co/public/button_8.png' alt='Convidame un Matecito' /></a>
+
+I'm a 20 years old software developer from Argentina who would really appreciate your suport so I can keep working on my own side projects
+
+# 📅 Coming soon:
 
 - [ ] Have custom styles
 - [ ] Default layout
