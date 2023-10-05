@@ -42,7 +42,7 @@ Dive into the interactive world of `Smart-layout` without any setup hassles! We'
 
 Whether you're curious about its capabilities or just want to play around, StackBlitz offers an immediate, hands-on experience.
 
-⚡ [Try Smart-layout on StackBlitz Now!](#https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
+⚡ [Try Smart-layout on StackBlitz Now!](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
 
 
 # 👨‍💻 **Support a Passionate Young Developer!** 👨‍💻
