@@ -3,7 +3,8 @@ import Logic from "./Logic";
 import styles from "./styles.module.css";
 
 /**
- * This component is used to show the user where the element will be placed when it is moved
+ * This component is used to show the user where the element will be placed when it is moved 
+ * @param {IPropsBorderSelector} props
  */
 const BorderSelector = ({
   action,
