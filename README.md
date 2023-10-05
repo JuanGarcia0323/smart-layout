@@ -56,8 +56,6 @@ Your donation won't just be a contribution; it will be a lifeline that enables m
 <a href="https://www.buymeacoffee.com/juanemilio" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 <a href='https://matecito.co/JuanEmilio03' rel='noopener' target='_blank'><img srcset='https://www.matecito.co/public/button_8.png 1x, https://www.matecito.co/public/button_8_2x.png 2x, https://www.matecito.co/public/button_8_3.75x.png 3.75x' src='https://www.matecito.co/public/button_8.png' alt='Convidame un Matecito' /></a>
 
-I'm a 20 years old software developer from Argentina who would really appreciate your suport so I can keep working on my own side projects
-
 # 📅 Coming soon:
 
 - [ ] Have custom styles
