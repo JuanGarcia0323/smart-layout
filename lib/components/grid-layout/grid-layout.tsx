@@ -5,6 +5,10 @@ import Logic from "./Logic";
 import ElementContainer from "../element-container/element-container";
 import styles from "./styles.module.css";
 
+/**
+ * This component is used to render the grid layout. It is responsible for rendering the elements and the layout 
+ * @param {IPropsGridLayout} props
+ */
 const GridLayout = ({
   layout,
   setLayout,
@@ -31,6 +35,11 @@ const GridLayout = ({
     limitMovement,
   });
 
+  /**
+   * This recursive function is used to unfold the layout data
+   * @param {dynamicLayout} layout
+   * @param {number} parentId
+   */
   const unfoldData = useCallback(
     (layout: dynamicLayout, parentId = -1) => {
       const parents = layout.filter((element) => element.parentId === parentId);

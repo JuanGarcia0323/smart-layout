@@ -2,6 +2,10 @@ import { Fullscreen, Close, Move, Swap, MovetoTheTop } from "../../icons/index";
 import { IPropsMenuBar } from "../../interfaces";
 import styles from "./styles.module.css";
 
+/**
+ * This component is used to render the menu bar of the elements. It is responsible for handling the move, close and full screen actions
+ * @param {IPropsMenuBar} props
+ */
 const MenuBar = ({
   children,
   onClickClose,

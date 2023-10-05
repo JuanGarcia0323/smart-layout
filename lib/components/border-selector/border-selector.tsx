@@ -2,6 +2,9 @@ import { IPropsBorderSelector } from "../../interfaces";
 import Logic from "./Logic";
 import styles from "./styles.module.css";
 
+/**
+ * This component is used to show the user where the element will be placed when it is moved
+ */
 const BorderSelector = ({
   action,
   className,

@@ -4,6 +4,10 @@ import BorderSelector from "../border-selector/border-selector";
 import MenuBar from "../menu-bar/menu-bar";
 import styles from "./styles.module.css";
 
+/**
+ * This component is used to render the elements of the layout and handle the move, drop and nesting of the elements 
+ * @param {IPropsLayoutElement} props
+ */
 const LayoutElement = memo(
   ({
     element,

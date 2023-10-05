@@ -3,6 +3,10 @@ import Logic from "./Logic";
 import { IElementContainer } from "../../interfaces";
 import styles from "./styles.module.css";
 
+/**
+ * This component is used to render the children of the ComponentLayout. It is responsible for handling the position of the elements on the screen and their seize
+ * @param {IElementContainer} props
+ */
 const ElementContainer = (props: IElementContainer) => {
   const { element, dragging, fullScreen, cancelSelection } = props;
   const { ref } = Logic(props);
