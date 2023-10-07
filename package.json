@@ -1,7 +1,7 @@
 {
   "name": "smart-layout",
   "private": false,
-  "version": "1.0.10",
+  "version": "1.0.11",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -46,7 +46,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepublishOnly": "npm run build && npm run version",
-    "version": "auto-changelog -p && git add CHANGELOG.md" 
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "peerDependencies": {
     "react": "^18.2.0",
