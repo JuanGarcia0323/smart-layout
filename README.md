@@ -2,6 +2,13 @@
 
 React Smart-Layout is a cutting-edge React library designed to effortlessly generate adaptive layouts that fit perfectly into any container. Empower your users by allowing them to swiftly reorganize elements and resize them to their needs.
 
+<div style="width:100%; display:flex; align-items:align-center; gap:10px">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="Created with TypeScript" style="border-radius:5px; width:200px">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" style="border-radius:5px; width:150px; " alt="Created with and for React" >
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" style="border-radius:5px; width:150px " alt="Created with CSS" >
+  <img src="https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white" style="border-radius:5px; width:150px" alt="Tested with Jest" >
+</div>
+
 ## 🌟 Features:
 
 - **State Preservation**: Maintains the state of components even after repositioning, ensuring a consistent user experience.
