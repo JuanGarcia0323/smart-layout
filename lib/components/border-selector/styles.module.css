@@ -10,7 +10,8 @@
   opacity: 0.7;
   z-index: 3;
   &:hover {
-    box-shadow: inset 0px 0px 20px 4px rgba(23, 0, 3, 0.3);
+    box-shadow: inset 0px 0px 20px 4px rgba(23, 0, 3, 0.3),
+      inset 0px 0px 20px 4px rgba(148, 148, 148, 0.931);
   }
 }
 

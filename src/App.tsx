@@ -19,17 +19,10 @@ function App() {
         }}
       >
         <ComponentLayout id="starting-layout">
+          <div style={{ width: "100%", height: "100%", background: "black" }} />
           <div style={{ width: "100%", height: "100%", background: "gray" }} />
-          <div style={{ width: "100%", height: "100%", background: "blue" }} />
-          <div
-            style={{ width: "100%", height: "100%", background: "orange" }}
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "orange" }}
-          />
-          <div
-            style={{ width: "100%", height: "100%", background: "orange" }}
-          />
+          <div style={{ width: "100%", height: "100%", background: "white" }} />
+          <div style={{ width: "100%", height: "100%", background: "red" }} />
         </ComponentLayout>
       </div>
     </div>
