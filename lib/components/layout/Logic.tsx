@@ -35,7 +35,7 @@ const convertChildrenToElementContainer = (
   return newObject;
 };
 
-const Logic = ({ children, id }: IPropsComponentLayout) => {
+const Logic = ({ children, id, customLayout }: IPropsComponentLayout) => {
   const [layout, setLayout] = useState<dynamicLayout>([]);
   const [elements, setElements] = useState<IElementContainer[]>([]);
 
@@ -72,8 +72,19 @@ const Logic = ({ children, id }: IPropsComponentLayout) => {
     if (!storedLayout) {
       return;
     }
-    const customLayot: dynamicLayout = JSON.parse(storedLayout);
-    const originalElementLayout: dynamicLayout = customLayot.filter(
+    if (
+      children &&
+      Array.isArray(children) &&
+      customLayout &&
+      customLayout.length > 0 &&
+      customLayout.filter((e) => e.id < 300).length <= children.length
+    ) {
+      localStorage.setItem(id, JSON.stringify(customLayout));
+      setLayout(customLayout);
+      return;
+    }
+    const parsedLayout: dynamicLayout = JSON.parse(storedLayout);
+    const originalElementLayout: dynamicLayout = parsedLayout.filter(
       (e) => e.id < 300
     );
     if (
@@ -85,8 +96,8 @@ const Logic = ({ children, id }: IPropsComponentLayout) => {
       localStorage.removeItem(id);
       return;
     }
-    setLayout(customLayot);
-  }, [children, id]);
+    setLayout(parsedLayout);
+  }, [children, customLayout, id]);
 
   return { layout, setLayout, elements, startLayout };
 };

@@ -51,7 +51,6 @@ Whether you're curious about its capabilities or just want to play around, Stack
 
 ⚡ [Try Smart-layout on StackBlitz Now!](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
 
-
 # 👨‍💻 **Support a Passionate Young Developer!** 👨‍💻
 
 Hello! I'm a 20-year-old software developer hailing from the vibrant landscapes of Argentina. My passion lies in bringing innovative ideas to life through my side projects. However, as much as I love what I do, it's a challenge to sustain and grow without some support.
@@ -62,7 +61,7 @@ Your donation won't just be a contribution; it will be a lifeline that enables m
 
 🌟 **Show Some Love on GitHub!** If you've found value in my work or just want to support me, please consider giving a star to my repository. It not only boosts my motivation but also helps others discover my projects. [⭐ Star on GitHub!](https://github.com/JuanGarcia0323/smart-layout)
 
-<a href="https://www.buymeacoffee.com/juanemilio" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href="https://www.buymeacoffee.com/juanemilio" rel='noopener' target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 <a href='https://matecito.co/JuanEmilio03' rel='noopener' target='_blank'><img srcset='https://www.matecito.co/public/button_8.png 1x, https://www.matecito.co/public/button_8_2x.png 2x, https://www.matecito.co/public/button_8_3.75x.png 3.75x' src='https://www.matecito.co/public/button_8.png' alt='Convidame un Matecito' /></a>
 
 # 📅 Coming soon:
