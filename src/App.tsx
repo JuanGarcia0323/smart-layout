@@ -1,50 +1,53 @@
 import { useState } from "react";
 import { ComponentLayout } from "../lib/main";
-import { dynamicLayout } from "../lib/interfaces";
+import { customLayout } from "../lib/interfaces";
 import TestCounter from "./TestCounter";
 function App() {
-  const [layout, setLayout] = useState<dynamicLayout>();
-  const [counter, setCounter] = useState(0);
+  const [layout, setLayout] = useState<customLayout>();
+  const [show, setShow] = useState(false);
 
   const twoByTwo = () => {
-    const newLayout: dynamicLayout = [
-      {
-        id: 1697032849065,
-        key: "1697032849065",
-        orientation: "vertical",
-        parentId: -1,
-      },
-      {
-        id: 1,
-        key: "1starting-layout",
-        orientation: "horizontal",
-        parentId: 1697032849065,
-      },
-      {
-        id: 0,
-        key: "0starting-layout",
-        orientation: "horizontal",
-        parentId: 1697032849065,
-      },
-      {
-        id: 2,
-        key: "2starting-layout",
-        orientation: "horizontal",
-        parentId: 1697032205830,
-      },
-      {
-        id: 1697032205830,
-        key: "1697032205830",
-        orientation: "vertical",
-        parentId: -1,
-      },
-      {
-        id: 3,
-        key: "3starting-layout",
-        orientation: "horizontal",
-        parentId: 1697032205830,
-      },
-    ];
+    const newLayout: customLayout = {
+      name: new Date().getTime().toString(),
+      layout: [
+        {
+          id: 1697032849065,
+          key: "1697032849065",
+          orientation: "vertical",
+          parentId: -1,
+        },
+        {
+          id: 1,
+          key: "1starting-layout",
+          orientation: "horizontal",
+          parentId: 1697032849065,
+        },
+        {
+          id: 0,
+          key: "0starting-layout",
+          orientation: "horizontal",
+          parentId: 1697032849065,
+        },
+        {
+          id: 2,
+          key: "2starting-layout",
+          orientation: "horizontal",
+          parentId: 1697032205830,
+        },
+        {
+          id: 1697032205830,
+          key: "1697032205830",
+          orientation: "vertical",
+          parentId: -1,
+        },
+        {
+          id: 3,
+          key: "3starting-layout",
+          orientation: "horizontal",
+          parentId: 1697032205830,
+        },
+      ],
+    };
     setLayout(newLayout);
   };
 
@@ -57,39 +60,34 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <button className="" onClick={twoByTwo}>
-        Test
-      </button>
       <div
         style={{
           width: "100%",
           height: "100%",
           overflow: "hidden",
-          display: "flex",
           gap: 8,
         }}
       >
-        <ComponentLayout id="starting-layout" customLayout={layout}>
-          <div
-            style={{ width: "100%", height: "100%", background: "black" }}
-          ></div>
-          <TestCounter />
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "red",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <button onClick={() => setCounter(counter + 1)}>
-              Click me {counter}
-            </button>
-          </div>
-          <div style={{ width: "100%", height: "100%", background: "green" }} />
-        </ComponentLayout>
+        <div className="menu-bar">
+          <button className="" onClick={twoByTwo}>
+            Layout 2x2
+          </button>
+          <button className="" onClick={() => setShow(!show)}>
+            Show Hide
+          </button>
+        </div>
+        <div className="container">
+          {show && (
+            <ComponentLayout id="starting-layout" customLayout={layout}>
+              <div
+                style={{ width: "100%", height: "100%", background: "black" }}
+              ></div>
+              <TestCounter />
+              <TestCounter />
+              <TestCounter />
+            </ComponentLayout>
+          )}
+        </div>
       </div>
     </div>
   );

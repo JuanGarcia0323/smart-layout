@@ -6,7 +6,7 @@ import ElementContainer from "../element-container/element-container";
 import styles from "./styles.module.css";
 
 /**
- * This component is used to render the grid layout. It is responsible for rendering the elements and the layout 
+ * This component is used to render the grid layout. It is responsible for rendering the elements and the layout
  * @param {IPropsGridLayout} props
  */
 const GridLayout = ({

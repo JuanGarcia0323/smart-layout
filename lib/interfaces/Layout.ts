@@ -3,12 +3,17 @@ import { dynamicLayout } from ".";
 
 type posibleMovement = "horizontal" | "vertical";
 
+type customLayout = {
+  name: string;
+  layout: dynamicLayout;
+};
+
 interface IPropsComponentLayout {
   children: ReactNode;
   id: string;
   hideMenuBar?: boolean;
   limitMovement?: posibleMovement;
-  customLayout?: dynamicLayout;
+  customLayout?: customLayout;
 }
 
-export type { IPropsComponentLayout, posibleMovement };
+export type { IPropsComponentLayout, posibleMovement, customLayout };

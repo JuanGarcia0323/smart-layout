@@ -35,6 +35,8 @@ const convertChildrenToElementContainer = (
   return newObject;
 };
 
+let lastCustomLayout: string = "";
+
 const Logic = ({ children, id, customLayout }: IPropsComponentLayout) => {
   const [layout, setLayout] = useState<dynamicLayout>([]);
   const [elements, setElements] = useState<IElementContainer[]>([]);
@@ -68,19 +70,21 @@ const Logic = ({ children, id, customLayout }: IPropsComponentLayout) => {
   }, [children, startLayout]);
 
   useEffect(() => {
-    const storedLayout = localStorage.getItem(id);
-    if (!storedLayout) {
-      return;
-    }
     if (
       children &&
       Array.isArray(children) &&
-      customLayout &&
-      customLayout.length > 0 &&
-      customLayout.filter((e) => e.id < 300).length <= children.length
+      customLayout?.layout &&
+      customLayout.name !== lastCustomLayout &&
+      customLayout.layout.length > 0 &&
+      customLayout.layout.filter((e) => e.id < 300).length <= children.length
     ) {
-      localStorage.setItem(id, JSON.stringify(customLayout));
-      setLayout(customLayout);
+      localStorage.setItem(id, JSON.stringify(customLayout.layout));
+      lastCustomLayout = customLayout.name;
+      setLayout(customLayout.layout);
+      return;
+    }
+    const storedLayout = localStorage.getItem(id);
+    if (!storedLayout) {
       return;
     }
     const parsedLayout: dynamicLayout = JSON.parse(storedLayout);

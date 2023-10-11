@@ -24,6 +24,7 @@ interface IPropsGridLayout {
   layoutId: string;
   limitMovement?: posibleMovement;
   hideMenubar?: boolean;
+  lastCustomLayout?: string;
 }
 
 type positionLayout = Array<position>;
