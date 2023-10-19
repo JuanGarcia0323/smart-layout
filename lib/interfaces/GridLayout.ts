@@ -1,5 +1,5 @@
-import { posibleMovement } from ".";
-import { IElementContainer } from "./ElementContainer";
+import { ReactNode } from "react";
+import { customLayout, posibleMovement } from ".";
 
 interface position {
   depth: number;
@@ -12,19 +12,15 @@ interface layoutElement {
   parentId: number;
   orientation: orientation;
   className?: string;
-  // content?: ReactNode;
   contrastMenuBar?: boolean;
 }
 
 interface IPropsGridLayout {
-  elements: IElementContainer[];
-  layout: dynamicLayout;
-  setLayout: (layout: dynamicLayout) => void;
-  startLayout: () => void;
-  layoutId: string;
+  children: ReactNode;
+  layoutID: string;
+  customLayout?: customLayout;
   limitMovement?: posibleMovement;
   hideMenubar?: boolean;
-  lastCustomLayout?: string;
 }
 
 type positionLayout = Array<position>;

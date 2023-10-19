@@ -1,29 +1,25 @@
 import { IPropsLayoutElement } from "../../interfaces";
-import { memo } from "react";
+import { memo, useContext } from "react";
+import LayoutContext from "../layout/Context";
 import BorderSelector from "../border-selector/border-selector";
 import MenuBar from "../menu-bar/menu-bar";
 import styles from "./styles.module.css";
 
 /**
- * This component is used to render the elements of the layout and handle the move, drop and nesting of the elements 
+ * This component is used to render the elements of the layout and handle the move, drop and nesting of the elements
  * @param {IPropsLayoutElement} props
  */
 const LayoutElement = memo(
-  ({
-    element,
-    dragging,
-    moveELement,
-    onClickFullScreen,
-    onClickMove,
-    onClickClose,
-    childrens,
-    fullScreen,
-    layout,
-    cancelSelection,
-    moveToTheTop,
-    hideMenubar,
-    limitMovement,
-  }: IPropsLayoutElement) => {
+  ({ element, childrens, hideMenubar, limitMovement }: IPropsLayoutElement) => {
+    const { actions, state } = useContext(LayoutContext);
+    const {
+      cancelSelection,
+      handleSwitch,
+      handleFullScreen,
+      moveToTheTop,
+      handleMove,
+    } = actions!;
+    const { layout, dragging, fullScreen } = state!;
     return (
       <div
         id={element.key}
@@ -52,9 +48,9 @@ const LayoutElement = memo(
           !hideMenubar && (
             <MenuBar
               dragging={!!dragging}
-              onClickMove={onClickMove}
-              onClickClose={onClickClose}
-              onClickFullScreen={onClickFullScreen}
+              onClickMove={() => handleSwitch(element)}
+              // onClickClose={onClickClose}
+              onClickFullScreen={() => handleFullScreen(element)}
               moveToTheTop={
                 moveToTheTop &&
                 (() => {
@@ -75,13 +71,13 @@ const LayoutElement = memo(
               <>
                 <BorderSelector
                   action={() => {
-                    moveELement && moveELement(dragging, element, "top");
+                    handleMove && handleMove(dragging, element, "top");
                   }}
                   position="top"
                 />
                 <BorderSelector
                   action={() => {
-                    moveELement && moveELement(dragging, element, "bottom");
+                    handleMove && handleMove(dragging, element, "bottom");
                   }}
                   position="bottom"
                 />
@@ -91,13 +87,13 @@ const LayoutElement = memo(
               <>
                 <BorderSelector
                   action={() => {
-                    moveELement && moveELement(dragging, element, "left");
+                    handleMove && handleMove(dragging, element, "left");
                   }}
                   position="left"
                 />
                 <BorderSelector
                   action={() => {
-                    moveELement && moveELement(dragging, element, "right");
+                    handleMove && handleMove(dragging, element, "right");
                   }}
                   position="right"
                 />
@@ -116,14 +112,14 @@ const LayoutElement = memo(
                   <BorderSelector
                     customStyle={{ height: "4%", zIndex: 4 }}
                     action={() => {
-                      moveELement && moveELement(dragging, element, "top");
+                      handleMove && handleMove(dragging, element, "top");
                     }}
                     position="top"
                   />
                   <BorderSelector
                     customStyle={{ height: "4%", zIndex: 4 }}
                     action={() => {
-                      moveELement && moveELement(dragging, element, "bottom");
+                      handleMove && handleMove(dragging, element, "bottom");
                     }}
                     position="bottom"
                   />
@@ -134,14 +130,14 @@ const LayoutElement = memo(
                   <BorderSelector
                     customStyle={{ width: "4%", zIndex: 4 }}
                     action={() => {
-                      moveELement && moveELement(dragging, element, "left");
+                      handleMove && handleMove(dragging, element, "left");
                     }}
                     position="left"
                   />
                   <BorderSelector
                     customStyle={{ width: "4%", zIndex: 4 }}
                     action={() => {
-                      moveELement && moveELement(dragging, element, "right");
+                      handleMove && handleMove(dragging, element, "right");
                     }}
                     position="right"
                   />

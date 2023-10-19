@@ -4,7 +4,7 @@ import { customLayout } from "../lib/interfaces";
 import TestCounter from "./TestCounter";
 function App() {
   const [layout, setLayout] = useState<customLayout>();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const twoByTwo = () => {
     const newLayout: customLayout = {

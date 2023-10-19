@@ -1,4 +1,8 @@
-import { IPropsGridLayout, dynamicLayout } from "../../interfaces";
+import {
+  IElementContainer,
+  dynamicLayout,
+  IPropsGridLayout,
+} from "../../interfaces";
 import { useCallback } from "react";
 import LayoutElement from "../layout-element/layout-element";
 import Logic from "./Logic";
@@ -10,13 +14,11 @@ import styles from "./styles.module.css";
  * @param {IPropsGridLayout} props
  */
 const GridLayout = ({
-  layout,
-  setLayout,
-  elements,
-  startLayout,
-  layoutId,
-  limitMovement,
+  children,
+  layoutID,
+  customLayout,
   hideMenubar,
+  limitMovement,
 }: IPropsGridLayout) => {
   const {
     handleSwitch,
@@ -26,12 +28,13 @@ const GridLayout = ({
     handleFullScreen,
     fullScreen,
     cancelSelection,
-  } = Logic({
-    layout,
-    setLayout,
     elements,
-    startLayout,
-    layoutId,
+    layout,
+  } = Logic({
+    children,
+    layoutID,
+    customLayout,
+    hideMenubar,
     limitMovement,
   });
 
@@ -79,18 +82,19 @@ const GridLayout = ({
 
   return (
     <div className={styles["grid-layout-main-container"]}>
-      <div className={styles["grid-layout-parent-grid"]} id={layoutId}>
-        {elements.map((element) => {
-          return (
-            <ElementContainer
-              {...element}
-              key={element.key}
-              fullScreen={fullScreen}
-              dragging={dragging}
-              cancelSelection={cancelSelection}
-            />
-          );
-        })}
+      <div className={styles["grid-layout-parent-grid"]} id={layoutID}>
+        {elements?.length &&
+          elements?.map((element: IElementContainer) => {
+            return (
+              <ElementContainer
+                {...element}
+                key={element.key}
+                fullScreen={fullScreen}
+                dragging={dragging}
+                cancelSelection={cancelSelection}
+              />
+            );
+          })}
         {fullScreen ? (
           <LayoutElement
             key={fullScreen.key}

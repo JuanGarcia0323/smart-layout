@@ -1,248 +1,66 @@
 import {
+  IContextStore,
   IPropsGridLayout,
-  direction,
   dynamicLayout,
-  layoutElement,
-  orientation,
 } from "../../interfaces";
-import { useCallback, useState } from "react";
+import { useContext, useEffect } from "react";
+import LayoutContext from "../layout/Context";
 
-const switchElement = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement
-) => {
-  if (
-    element.id === elementToSwitch.parentId ||
-    element.parentId === elementToSwitch.id
-  ) {
-    return layout;
-  }
+let lastCustomLayout = "";
 
-  const copyElemenToSwitch = { ...elementToSwitch };
-  elementToSwitch.parentId = element.parentId;
-  element.parentId = copyElemenToSwitch.parentId;
-  const newLayout = layout.map((elementLayout) => {
-    if (elementLayout.id === element.id) {
-      return elementToSwitch;
-    }
-    if (elementLayout.id === elementToSwitch.id) {
-      return element;
-    }
-    return elementLayout;
-  });
-  return newLayout;
-};
+const Logic = ({ layoutID, children, customLayout }: IPropsGridLayout) => {
+  const { actions, state }: IContextStore = useContext(LayoutContext);
+  const {
+    setLayout,
+    startLayout,
+    moveElement,
+    cancelSelection,
+    deleteFromLayout,
+    handleFullScreen,
+    handleMove,
+    handleSwitch,
+    moveToTheTop,
+    saveLayout,
+  } = actions!;
+  const { elements, layout, dragging, fullScreen } = state!;
 
-const reorganizeItems = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement,
-  parentId: number,
-  elementToSwitchIndex: number,
-  orientation: orientation
-) => {
-  const newElementId = new Date().getTime();
-  const newElement: layoutElement = {
-    id: newElementId,
-    key: `${newElementId}`,
-    orientation,
-    parentId: parentId,
-  };
-  const newLayout = layout.map((e) => {
-    if (e.id === element.id || e.id === elementToSwitch.id) {
-      e.parentId = newElementId;
-    }
-    return e;
-  });
+  useEffect(() => {
+    startLayout(children, layoutID);
+  }, [children, layoutID, startLayout]);
 
-  newLayout.splice(elementToSwitchIndex, 0, newElement);
-  return newLayout;
-};
-
-const moveElement = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement,
-  directionInsert: direction
-) => {
-  const repositionElement = (
-    layout: dynamicLayout,
-    elementToInsert: layoutElement,
-    direction: direction
-  ) => {
-    const moveElement =
-      direction === "left" || direction === "top"
-        ? indexToSwitch
-          ? -1
-          : 0
-        : +1;
-    element.parentId = elementToSwitch.parentId;
-    const newLayout = layout.filter(
-      (layoutElement) => layoutElement.id !== element.id
-    );
-    newLayout.splice(indexToSwitch + moveElement, 0, elementToInsert);
-    return newLayout;
-  };
-
-  const indexToSwitch = layout.findIndex(
-    (layoutElement) => layoutElement.id === elementToSwitch.id
-  );
-
-  const parentElement = layout.find(
-    (layoutElement) => layoutElement.id === elementToSwitch.parentId
-  );
-
-  if (
-    element.id === elementToSwitch.parentId ||
-    element.parentId === elementToSwitch.id
-  ) {
-    return layout;
-  }
-
-  const repositionedLayout = repositionElement(
-    layout,
-    element,
-    directionInsert
-  );
-
-  if (
-    (directionInsert === "right" || directionInsert === "left") &&
-    (parentElement?.orientation === "vertical" || !parentElement)
-  ) {
-    const reor_i = reorganizeItems(
-      repositionedLayout,
-      element,
-      elementToSwitch,
-      elementToSwitch.parentId,
-      indexToSwitch,
-      "horizontal"
-    );
-    return reor_i;
-  }
-
-  if (
-    (directionInsert === "top" || directionInsert === "bottom") &&
-    (parentElement?.orientation === "horizontal" || !parentElement)
-  ) {
-    const reor_i = reorganizeItems(
-      repositionedLayout,
-      element,
-      elementToSwitch,
-      elementToSwitch.parentId,
-      indexToSwitch,
-      "vertical"
-    );
-    return reor_i;
-  }
-
-  return repositionedLayout;
-};
-
-const balance = (layout: dynamicLayout): dynamicLayout => {
-  const newLayout = layout
-    .map((element) => {
-      const children = layout.filter(
-        (layoutELement) => layoutELement.parentId === element.id
-      );
-
-      if (children.length === 1) {
-        children[0].parentId = element.parentId;
-        return null;
-      }
-
-      return element;
-    })
-    .filter((e) => e);
-  return newLayout as dynamicLayout;
-};
-
-const saveLayout = (layout: dynamicLayout, layoutId: string) => {
-  const customLayot = JSON.stringify(layout);
-  localStorage.setItem(layoutId, customLayot);
-};
-
-const Logic = ({ layout, setLayout, layoutId }: IPropsGridLayout) => {
-  const [dragging, setDragging] = useState<layoutElement>();
-  const [fullScreen, setFullScreen] = useState<layoutElement>();
-
-  const setter = useCallback(
-    (newLayout: dynamicLayout) => {
-      const balancedLayout = balance(newLayout);
-      saveLayout(balancedLayout, layoutId);
-      setLayout(balancedLayout);
-    },
-    [layoutId, setLayout]
-  );
-
-  const handleSwitch = useCallback(
-    (element: layoutElement) => {
-      if (dragging) {
-        setDragging(undefined);
-        const switchedElement = switchElement(layout, element, dragging);
-        saveLayout(switchedElement, layoutId);
-        setLayout(switchedElement);
-        return;
-      }
-      setDragging(element);
-    },
-    [dragging, layout, layoutId, setLayout]
-  );
-
-  const handleMove = useCallback(
-    (
-      dragging: layoutElement,
-      element: layoutElement,
-      directionInsert: direction
-    ) => {
-      const reorganizedElements = moveElement(
-        layout,
-        dragging,
-        element,
-        directionInsert
-      );
-      setter(reorganizedElements);
-      setDragging(undefined);
-    },
-    [layout, setter]
-  );
-
-  const moveToTheTop = useCallback(
-    (element?: layoutElement) => {
-      if (!element) {
-        return;
-      }
-      element.parentId = -1;
-      setter(Array.from(layout));
-      setDragging(undefined);
-    },
-    [layout, setter]
-  );
-
-  const deleteFromLayout = useCallback(
-    (layout: dynamicLayout, element: layoutElement) => {
-      setter(
-        layout.filter((e) => {
-          return e.id !== element.id;
-        })
-      );
-      setFullScreen(undefined);
-    },
-    [setter]
-  );
-
-  const handleFullScreen = (element: layoutElement) => {
-    if (fullScreen?.id === element.id) {
-      setFullScreen(undefined);
+  useEffect(() => {
+    if (
+      children &&
+      Array.isArray(children) &&
+      customLayout?.layout &&
+      customLayout.name !== lastCustomLayout &&
+      customLayout.layout.length > 0 &&
+      customLayout.layout.filter((e) => e.id < 300).length <= children.length
+    ) {
+      localStorage.setItem(layoutID, JSON.stringify(customLayout.layout));
+      lastCustomLayout = customLayout.name;
+      setLayout(customLayout.layout);
       return;
     }
-
-    setFullScreen(element);
-  };
-
-  const cancelSelection = () => {
-    setDragging(undefined);
-  };
+    const storedLayout = localStorage.getItem(layoutID);
+    if (!storedLayout) {
+      return;
+    }
+    const parsedLayout: dynamicLayout = JSON.parse(storedLayout);
+    const originalElementLayout: dynamicLayout = parsedLayout.filter(
+      (e) => e.id < 300
+    );
+    if (
+      (Array.isArray(children) &&
+        children &&
+        originalElementLayout.length !== children.length) ||
+      (originalElementLayout.length > 1 && !Array.isArray(children))
+    ) {
+      localStorage.removeItem(layoutID);
+      return;
+    }
+    setLayout(parsedLayout);
+  }, [children, customLayout?.layout, customLayout?.name, layoutID, setLayout]);
 
   return {
     moveElement,
@@ -256,6 +74,7 @@ const Logic = ({ layout, setLayout, layoutId }: IPropsGridLayout) => {
     handleFullScreen,
     cancelSelection,
     saveLayout,
+    elements,
   };
 };
 
