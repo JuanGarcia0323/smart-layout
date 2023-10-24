@@ -26,8 +26,6 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
     switchElement,
   } = LogicContext();
 
-  console.log("rerender");
-
   const value: IContextStore = useMemo(
     () => ({
       actions: {

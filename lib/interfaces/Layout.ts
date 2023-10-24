@@ -16,7 +16,7 @@ interface stateContext {
 }
 
 interface actionsContext {
-  startLayout: (children: ReactNode, id: string) => void;
+  startLayout: (children: childrenLayout, id: string) => void;
   setLayout: (layout: dynamicLayout) => void;
   moveElement: (
     layout: dynamicLayout,
@@ -42,17 +42,34 @@ interface IContextStore {
   actions?: actionsContext;
 }
 
+interface ICustomComponentLayout {
+  className: string;
+  title: string;
+  onFullScreen: () => void;
+  onClose: () => void;
+  onMove: () => void;
+  onMoveToTheTop: () => void;
+  content: ReactNode;
+}
+
 interface IPropsComponentLayout {
-  children: ReactNode;
+  children: childrenLayout;
   id: string;
   hideMenuBar?: boolean;
   limitMovement?: posibleMovement;
   customLayout?: customLayout;
 }
 
+type childrenLayout =
+  | ReactNode
+  | ICustomComponentLayout
+  | Array<ICustomComponentLayout>;
+
 export type {
   IPropsComponentLayout,
   posibleMovement,
   customLayout,
   IContextStore,
+  childrenLayout,
+  ICustomComponentLayout,
 };

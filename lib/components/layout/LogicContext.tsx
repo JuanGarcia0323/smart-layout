@@ -1,10 +1,11 @@
-import { useCallback, ReactNode } from "react";
+import { useCallback } from "react";
 import {
   dynamicLayout,
   layoutElement,
   IElementContainer,
   direction,
   orientation,
+  childrenLayout,
 } from "../../interfaces";
 import { useState } from "react";
 
@@ -178,7 +179,7 @@ const convertChildrenToLayout = (
 };
 
 const convertChildrenToElementContainer = (
-  children: ReactNode,
+  children: childrenLayout,
   id: number,
   layoutId: string
 ): IElementContainer => {
@@ -191,6 +192,8 @@ const convertChildrenToElementContainer = (
   return newObject;
 };
 
+let count = 0;
+
 // Custom-hook
 const LogicContext = () => {
   const [layout, setLayout] = useState<dynamicLayout>([]);
@@ -199,7 +202,13 @@ const LogicContext = () => {
   const [fullScreen, setFullScreen] = useState<layoutElement>();
   const [layoutID, setLayoutID] = useState<string>();
 
-  const startLayout = useCallback((children: ReactNode, id: string) => {
+  const trackReRender = () => {
+    count++;
+    console.log("re-render", count);
+  };
+  trackReRender();
+
+  const startLayout = useCallback((children: childrenLayout, id: string) => {
     if (!children) {
       setLayout([]);
       setElements([]);

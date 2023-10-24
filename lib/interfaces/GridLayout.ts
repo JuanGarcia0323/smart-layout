@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { customLayout, posibleMovement } from ".";
+import { childrenLayout, customLayout, posibleMovement } from ".";
 
 interface position {
   depth: number;
@@ -16,7 +15,7 @@ interface layoutElement {
 }
 
 interface IPropsGridLayout {
-  children: ReactNode;
+  children: childrenLayout;
   layoutID: string;
   customLayout?: customLayout;
   limitMovement?: posibleMovement;
