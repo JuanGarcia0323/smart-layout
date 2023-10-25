@@ -43,18 +43,17 @@ const GridLayout = (props: IPropsGridLayout) => {
   return (
     <div className={styles["grid-layout-main-container"]}>
       <div className={styles["grid-layout-parent-grid"]} id={props.layoutID}>
-        {elements?.length &&
-          elements?.map((element: IElementContainer) => {
-            return (
-              <ElementContainer
-                {...element}
-                key={element.key}
-                fullScreen={fullScreen}
-                dragging={dragging}
-                cancelSelection={cancelSelection}
-              />
-            );
-          })}
+        {elements?.map((element: IElementContainer) => {
+          return (
+            <ElementContainer
+              {...element}
+              key={element.key}
+              fullScreen={fullScreen}
+              dragging={dragging}
+              cancelSelection={cancelSelection}
+            />
+          );
+        })}
         {fullScreen ? (
           <LayoutElement
             key={fullScreen.key}
