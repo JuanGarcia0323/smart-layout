@@ -4,9 +4,16 @@
   position: relative;
   width: 100%;
   max-width: 100%;
+  min-height: fit-content;
+  min-width: fit-content;
   height: 100%;
   gap: 0.5rem;
   border-radius: 0.25rem;
+}
+
+.layout-element-fullscreen-state {
+  width: 100%;
+  height: 100%;
 }
 
 .layout-element-dragging-state {
