@@ -5,6 +5,7 @@ import TestCounter from "./TestCounter";
 function App() {
   const [layout, setLayout] = useState<customLayout>();
   const [show, setShow] = useState(true);
+  const [elements, setElements] = useState<Array<number>>([1, 2, 3, 4]);
 
   const twoByTwo = () => {
     const newLayout: customLayout = {
@@ -78,13 +79,26 @@ function App() {
         </div>
         <div className="container">
           {show && (
-            <ComponentLayout id="starting-layout" customLayout={layout}>
-              <div
-                style={{ width: "100%", height: "100%", background: "black" }}
-              ></div>
-              <TestCounter />
-              <TestCounter />
-              <TestCounter />
+            <ComponentLayout
+              id="starting-layout"
+              config={{
+                customLayout: layout,
+                onClose: (e) => {
+                  console.log(e);
+                  setElements(elements.filter((el) => el !== e.name));
+                },
+                classNameLayoutElement: "test",
+                elementsNames: elements,
+              }}
+            >
+              {elements.map((e) => {
+                return (
+                  <TestCounter
+                    key={e.toString() + "test"}
+                    showDescription={false}
+                  />
+                );
+              })}
             </ComponentLayout>
           )}
         </div>

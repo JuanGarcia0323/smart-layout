@@ -16,19 +16,12 @@ import LayoutProvider from "./Provider";
 export function ComponentLayout({
   children,
   id,
-  hideMenuBar,
-  limitMovement,
-  customLayout,
+  config,
 }: IPropsComponentLayout) {
   return (
     <LayoutProvider>
       <div className={styles["component-layout-parent-container"]}>
-        <GridLayout
-          layoutID={id}
-          customLayout={customLayout}
-          hideMenubar={hideMenuBar}
-          limitMovement={limitMovement}
-        >
+        <GridLayout layoutID={id} config={config}>
           {children}
         </GridLayout>
       </div>

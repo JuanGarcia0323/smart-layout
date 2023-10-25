@@ -13,30 +13,9 @@ import styles from "./styles.module.css";
  * This component is used to render the grid layout. It is responsible for rendering the elements and the layout
  * @param {IPropsGridLayout} props
  */
-const GridLayout = ({
-  children,
-  layoutID,
-  customLayout,
-  hideMenubar,
-  limitMovement,
-}: IPropsGridLayout) => {
-  const {
-    handleSwitch,
-    dragging,
-    handleMove,
-    moveToTheTop,
-    handleFullScreen,
-    fullScreen,
-    cancelSelection,
-    elements,
-    layout,
-  } = Logic({
-    children,
-    layoutID,
-    customLayout,
-    hideMenubar,
-    limitMovement,
-  });
+const GridLayout = (props: IPropsGridLayout) => {
+  const { dragging, fullScreen, cancelSelection, elements, layout } =
+    Logic(props);
 
   /**
    * This recursive function is used to unfold the layout data
@@ -50,39 +29,20 @@ const GridLayout = ({
         const childrens = unfoldData(layout, element.id);
         return (
           <LayoutElement
-            layout={layout}
+            config={props.config}
             key={element.key}
             childrens={childrens}
-            dragging={dragging}
             element={element}
-            fullScreen={fullScreen}
-            moveELement={handleMove}
-            onClickFullScreen={() => handleFullScreen(element)}
-            onClickMove={() => handleSwitch(element)}
-            cancelSelection={cancelSelection}
-            moveToTheTop={moveToTheTop}
-            limitMovement={limitMovement}
-            hideMenubar={hideMenubar}
           />
         );
       });
     },
-    [
-      cancelSelection,
-      dragging,
-      fullScreen,
-      handleFullScreen,
-      handleMove,
-      handleSwitch,
-      hideMenubar,
-      limitMovement,
-      moveToTheTop,
-    ]
+    [props.config]
   );
 
   return (
     <div className={styles["grid-layout-main-container"]}>
-      <div className={styles["grid-layout-parent-grid"]} id={layoutID}>
+      <div className={styles["grid-layout-parent-grid"]} id={props.layoutID}>
         {elements?.length &&
           elements?.map((element: IElementContainer) => {
             return (
@@ -98,9 +58,12 @@ const GridLayout = ({
         {fullScreen ? (
           <LayoutElement
             key={fullScreen.key}
-            layout={layout}
             element={fullScreen}
-            onClickFullScreen={() => handleFullScreen(fullScreen)}
+            config={{
+              ...props.config,
+              disableMove: true,
+              disableMoveToTheTop: true,
+            }}
           />
         ) : (
           unfoldData(layout)

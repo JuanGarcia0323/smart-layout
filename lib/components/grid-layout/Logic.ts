@@ -8,7 +8,7 @@ import LayoutContext from "../layout/Context";
 
 let lastCustomLayout = "";
 
-const Logic = ({ layoutID, children, customLayout }: IPropsGridLayout) => {
+const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
   const { actions, state }: IContextStore = useContext(LayoutContext);
   const {
     setLayout,
@@ -23,10 +23,11 @@ const Logic = ({ layoutID, children, customLayout }: IPropsGridLayout) => {
     saveLayout,
   } = actions!;
   const { elements, layout, dragging, fullScreen } = state!;
+  const { customLayout } = config!;
 
   useEffect(() => {
-    startLayout(children, layoutID);
-  }, [children, layoutID, startLayout]);
+    startLayout(children, layoutID, config?.elementsNames);
+  }, [children, config?.elementsNames, layoutID, startLayout]);
 
   useEffect(() => {
     if (

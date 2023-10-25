@@ -1,3 +1,4 @@
+import Logic from "./Logic";
 import { IPropsLayoutElement } from "../../interfaces";
 import { memo, useContext } from "react";
 import LayoutContext from "../layout/Context";
@@ -10,16 +11,27 @@ import styles from "./styles.module.css";
  * @param {IPropsLayoutElement} props
  */
 const LayoutElement = memo(
-  ({ element, childrens, hideMenubar, limitMovement }: IPropsLayoutElement) => {
-    const { actions, state } = useContext(LayoutContext);
-    const {
-      cancelSelection,
-      handleSwitch,
-      handleFullScreen,
-      moveToTheTop,
-      handleMove,
-    } = actions!;
+  ({ element, childrens, config }: IPropsLayoutElement) => {
+    const { state } = useContext(LayoutContext);
     const { layout, dragging, fullScreen } = state!;
+    const {
+      classNameLayoutElement,
+      hideMenubar,
+      limitMovement,
+      disableClose,
+      disableFullscreen,
+      disableMove,
+      disableMoveToTheTop,
+      cancelSelection,
+      changeFullScreen,
+      handleMove,
+      move,
+      moveTop,
+      onClose,
+    } = Logic({
+      config,
+      element,
+    });
     return (
       <div
         id={element.key}
@@ -35,6 +47,11 @@ const LayoutElement = memo(
           styles["layout-element-dragging-state"]
         } 
         ${element.className} 
+        ${classNameLayoutElement}
+        ${
+          fullScreen?.key === element.key &&
+          styles["layout-element-fullscreen-state"]
+        }
       `}
         onClick={(e) => {
           if (element.id === dragging?.id && cancelSelection) {
@@ -48,20 +65,21 @@ const LayoutElement = memo(
           !hideMenubar && (
             <MenuBar
               dragging={!!dragging}
-              onClickMove={() => handleSwitch(element)}
-              // onClickClose={onClickClose}
-              onClickFullScreen={() => handleFullScreen(element)}
-              moveToTheTop={
-                moveToTheTop &&
-                (() => {
-                  moveToTheTop(element);
-                })
+              onClickClose={onClose && (() => onClose(element))}
+              onClickMove={move && (() => move(element))}
+              onClickFullScreen={
+                changeFullScreen && (() => changeFullScreen(element))
               }
-              disableMoveToTheTop={element.parentId === -1}
-              disableFullScreen={!!dragging}
-              disableClose={!!fullScreen || !!dragging}
+              moveToTheTop={moveTop && (() => moveTop(element))}
+              disableMoveToTheTop={
+                element.parentId === -1 || disableMoveToTheTop
+              }
+              disableFullScreen={!!dragging || disableFullscreen}
+              disableClose={!!fullScreen || !!dragging || disableClose}
               disableMove={
-                !!fullScreen || (element.parentId === -1 && layout?.length < 2)
+                !!fullScreen ||
+                (element.parentId === -1 && layout?.length < 2) ||
+                disableMove
               }
             />
           )}

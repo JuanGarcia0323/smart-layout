@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react";
-import Logic from "./Logic";
 import { IElementContainer } from "../../interfaces";
+import Logic from "./Logic";
 import styles from "./styles.module.css";
 
 /**

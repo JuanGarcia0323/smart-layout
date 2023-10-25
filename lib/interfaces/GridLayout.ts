@@ -1,4 +1,5 @@
-import { childrenLayout, customLayout, posibleMovement } from ".";
+import { ReactNode } from "react";
+import { IConfig } from ".";
 
 interface position {
   depth: number;
@@ -11,15 +12,13 @@ interface layoutElement {
   parentId: number;
   orientation: orientation;
   className?: string;
-  contrastMenuBar?: boolean;
+  name?: string | number;
 }
 
 interface IPropsGridLayout {
-  children: childrenLayout;
+  children: ReactNode;
   layoutID: string;
-  customLayout?: customLayout;
-  limitMovement?: posibleMovement;
-  hideMenubar?: boolean;
+  config?: IConfig;
 }
 
 type positionLayout = Array<position>;
