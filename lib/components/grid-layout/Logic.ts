@@ -23,7 +23,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
     saveLayout,
   } = actions!;
   const { elements, layout, dragging, fullScreen } = state!;
-  const { customLayout } = config!;
+  const { customLayout } = config ?? {};
 
   useEffect(() => {
     startLayout(children, layoutID, config?.elementsNames);
