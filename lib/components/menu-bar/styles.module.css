@@ -27,10 +27,6 @@
   border-radius: 0;
   z-index: 5;
   cursor: pointer;
-  & > svg {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
   &:disabled,
   &[disabled] {
     &:hover {
@@ -44,6 +40,12 @@
     background: rgba(99, 161, 247, 0.25);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   transition-property: all;

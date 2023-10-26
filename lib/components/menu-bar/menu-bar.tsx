@@ -51,7 +51,7 @@ const MenuBar = ({
         )}
         {!!onClickClose && (
           <button
-            className={`${styles["menubar-button-remove"]} ${styles["menubar-button-default"]}`}
+            className={`${styles["menubar-button-default"]}`}
             onClick={onClickClose}
             disabled={disableClose}
           >
