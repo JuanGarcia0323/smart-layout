@@ -4,7 +4,7 @@ import {
   dynamicLayout,
 } from "../../interfaces";
 import { useContext, useEffect } from "react";
-import LayoutContext from "../layout/Context";
+import LayoutContext from "../context/Context";
 
 let lastCustomLayout = "";
 
@@ -30,6 +30,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
   }, [children, config?.elementsNames, layoutID, startLayout]);
 
   useEffect(() => {
+    debugger;
     if (
       children &&
       Array.isArray(children) &&

@@ -1,6 +1,6 @@
 import { IPropsLayoutElement } from "../../interfaces";
 import { useContext } from "react";
-import LayoutContext from "../layout/Context";
+import LayoutContext from "../context/Context";
 
 const Logic = ({ config }: IPropsLayoutElement) => {
   const {

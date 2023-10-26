@@ -78,29 +78,31 @@ function App() {
           </button>
         </div>
         <div className="container">
-          {show && (
-            <ComponentLayout
-              id="starting-layout"
-              config={{
-                customLayout: layout,
-                onClose: (e) => {
-                  console.log(e);
-                  setElements(elements.filter((el) => el !== e.name));
-                },
-                classNameLayoutElement: "test",
-                elementsNames: elements,
-              }}
-            >
-              {elements.map((e) => {
-                return (
-                  <TestCounter
-                    key={e.toString() + "test"}
-                    showDescription={false}
-                  />
-                );
-              })}
-            </ComponentLayout>
-          )}
+          <ComponentLayout
+            id="starting-layout"
+            config={{
+              customLayout: layout,
+              onClose: (e) => {
+                console.log(e);
+                setElements(elements.filter((el) => el !== e.name));
+              },
+              classNameLayoutElement: "test",
+              elementsNames: elements,
+            }}
+          >
+            {show ? <TestCounter></TestCounter> : undefined}
+            <div
+              style={{ width: "100%", height: "100%", background: "#000" }}
+            ></div>
+
+            <div
+              style={{ width: "100%", height: "100%", background: "#000" }}
+            ></div>
+
+            <div
+              style={{ width: "100%", height: "100%", background: "#000" }}
+            ></div>
+          </ComponentLayout>
         </div>
       </div>
     </div>

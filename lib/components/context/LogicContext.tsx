@@ -203,6 +203,7 @@ const LogicContext = () => {
 
   const startLayout = useCallback(
     (children: ReactNode, id: string, names?: string[] | number[]) => {
+      debugger;
       if (!children) {
         setLayout([]);
         setElements([]);
@@ -217,6 +218,7 @@ const LogicContext = () => {
       const newLayout: dynamicLayout = [];
       const newElements: IElementContainer[] = [];
       children.forEach((element, i) => {
+        debugger;
         if (!element) {
           return;
         }

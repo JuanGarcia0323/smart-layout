@@ -1,7 +1,7 @@
 import Logic from "./Logic";
 import { IPropsLayoutElement } from "../../interfaces";
 import { memo, useContext } from "react";
-import LayoutContext from "../layout/Context";
+import LayoutContext from "../context/Context";
 import BorderSelector from "../border-selector/border-selector";
 import MenuBar from "../menu-bar/menu-bar";
 import styles from "./styles.module.css";
