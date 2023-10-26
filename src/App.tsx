@@ -81,7 +81,6 @@ function App() {
           <ComponentLayout
             id="starting-layout"
             config={{
-              customLayout: layout,
               onClose: (e) => {
                 console.log(e);
                 setElements(elements.filter((el) => el !== e.name));
@@ -90,10 +89,12 @@ function App() {
               elementsNames: elements,
             }}
           >
-            {show ? <TestCounter></TestCounter> : undefined}
-            <div
-              style={{ width: "100%", height: "100%", background: "#000" }}
-            ></div>
+            <TestCounter></TestCounter>
+            {show && (
+              <div
+                style={{ width: "100%", height: "100%", background: "#000" }}
+              ></div>
+            )}
 
             <div
               style={{ width: "100%", height: "100%", background: "#000" }}

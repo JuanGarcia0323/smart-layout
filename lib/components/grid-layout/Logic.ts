@@ -30,7 +30,6 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
   }, [children, config?.elementsNames, layoutID, startLayout]);
 
   useEffect(() => {
-    debugger;
     if (
       children &&
       Array.isArray(children) &&
@@ -55,7 +54,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
     if (
       (Array.isArray(children) &&
         children &&
-        originalElementLayout.length !== children.length) ||
+        originalElementLayout.length !== children.filter((e) => e).length) ||
       (originalElementLayout.length > 1 && !Array.isArray(children))
     ) {
       localStorage.removeItem(layoutID);
