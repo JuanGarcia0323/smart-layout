@@ -30,13 +30,15 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
   }, [children, config?.elementsNames, layoutID, startLayout]);
 
   useEffect(() => {
+    if (!children || !Array.isArray(children)) {
+      return;
+    }
+    const childrenLength = children.filter((e) => e).length;
     if (
-      children &&
-      Array.isArray(children) &&
       customLayout?.layout &&
       customLayout.name !== lastCustomLayout &&
       customLayout.layout.length > 0 &&
-      customLayout.layout.filter((e) => e.id < 300).length <= children.length
+      customLayout.layout.filter((e) => e.id < 300).length <= childrenLength
     ) {
       localStorage.setItem(layoutID, JSON.stringify(customLayout.layout));
       lastCustomLayout = customLayout.name;
@@ -52,9 +54,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
       (e) => e.id < 300
     );
     if (
-      (Array.isArray(children) &&
-        children &&
-        originalElementLayout.length !== children.filter((e) => e).length) ||
+      originalElementLayout.length !== childrenLength ||
       (originalElementLayout.length > 1 && !Array.isArray(children))
     ) {
       localStorage.removeItem(layoutID);
