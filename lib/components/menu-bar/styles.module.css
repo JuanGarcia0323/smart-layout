@@ -27,6 +27,10 @@
   border-radius: 0;
   z-index: 5;
   cursor: pointer;
+  & > svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
   &:disabled,
   &[disabled] {
     &:hover {
