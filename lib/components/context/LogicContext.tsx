@@ -5,8 +5,11 @@ import {
   IElementContainer,
   direction,
   orientation,
+  storedLayout,
 } from "../../interfaces";
 import { useState } from "react";
+
+const _version = "1.3.6";
 
 const switchElement = (
   layout: dynamicLayout,
@@ -159,7 +162,8 @@ const balance = (layout: dynamicLayout): dynamicLayout => {
 };
 
 const saveLayout = (layout: dynamicLayout, layoutID: string) => {
-  const customLayot = JSON.stringify(layout);
+  const layoutToStore: storedLayout = { version: _version, layout };
+  const customLayot = JSON.stringify(layoutToStore);
   localStorage.setItem(layoutID, customLayot);
 };
 
@@ -330,6 +334,7 @@ const LogicContext = () => {
     moveToTheTop,
     handleSwitch,
     handleMove,
+    _version,
   };
 };
 

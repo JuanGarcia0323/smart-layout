@@ -2,6 +2,7 @@ import {
   IContextStore,
   IPropsGridLayout,
   dynamicLayout,
+  storedLayout,
 } from "../../interfaces";
 import { useContext, useEffect } from "react";
 import LayoutContext from "../context/Context";
@@ -22,7 +23,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
     moveToTheTop,
     saveLayout,
   } = actions!;
-  const { elements, layout, dragging, fullScreen } = state!;
+  const { elements, layout, dragging, fullScreen, _version } = state!;
   const { customLayout } = config ?? {};
 
   useEffect(() => {
@@ -40,7 +41,11 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
       customLayout.layout.length > 0 &&
       customLayout.layout.filter((e) => e.id < 300).length <= childrenLength
     ) {
-      localStorage.setItem(layoutID, JSON.stringify(customLayout.layout));
+      const layoutToStore: storedLayout = {
+        layout: customLayout.layout,
+        version: _version,
+      };
+      localStorage.setItem(layoutID, JSON.stringify(layoutToStore));
       lastCustomLayout = customLayout.name;
       setLayout(customLayout.layout);
       return;
@@ -49,8 +54,12 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
     if (!storedLayout) {
       return;
     }
-    const parsedLayout: dynamicLayout = JSON.parse(storedLayout);
-    const originalElementLayout: dynamicLayout = parsedLayout.filter(
+    const parsedLayout: storedLayout = JSON.parse(storedLayout);
+    if (parsedLayout.version !== _version) {
+      localStorage.removeItem(layoutID);
+      return;
+    }
+    const originalElementLayout: dynamicLayout = parsedLayout.layout.filter(
       (e) => e.id < 300
     );
     if (
@@ -60,8 +69,15 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
       localStorage.removeItem(layoutID);
       return;
     }
-    setLayout(parsedLayout);
-  }, [children, customLayout?.layout, customLayout?.name, layoutID, setLayout]);
+    setLayout(parsedLayout.layout);
+  }, [
+    _version,
+    children,
+    customLayout?.layout,
+    customLayout?.name,
+    layoutID,
+    setLayout,
+  ]);
 
   return {
     moveElement,

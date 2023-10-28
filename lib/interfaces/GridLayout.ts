@@ -24,6 +24,7 @@ interface IPropsGridLayout {
 type positionLayout = Array<position>;
 type orientation = "vertical" | "horizontal";
 type dynamicLayout = Array<layoutElement>;
+type storedLayout = { layout: dynamicLayout; version: string };
 type direction = "right" | "left" | "bottom" | "top";
 
 export type {
@@ -34,4 +35,5 @@ export type {
   orientation,
   dynamicLayout,
   direction,
+  storedLayout,
 };

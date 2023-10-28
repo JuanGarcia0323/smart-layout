@@ -13,6 +13,7 @@ interface stateContext {
   elements: IElementContainer[];
   dragging?: layoutElement;
   fullScreen?: layoutElement;
+  _version: string;
 }
 
 interface actionsContext {

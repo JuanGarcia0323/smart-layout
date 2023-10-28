@@ -24,6 +24,7 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
     setElements,
     setFullScreen,
     switchElement,
+    _version,
   } = LogicContext();
 
   const value: IContextStore = useMemo(
@@ -50,9 +51,11 @@ const LayoutProvider = ({ children }: { children: ReactNode }) => {
         dragging,
         fullScreen,
         elements,
+        _version,
       },
     }),
     [
+      _version,
       balance,
       cancelSelection,
       deleteFromLayout,
