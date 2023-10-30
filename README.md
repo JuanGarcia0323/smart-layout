@@ -66,10 +66,10 @@ Your donation won't just be a contribution; it will be a lifeline that enables m
 
 # 📅 Coming soon:
 
-- [ ] Have custom styles
-- [ ] Default layout
+- [x] Have custom styles
+- [x] Default layout
 - [ ] Scroll on mobile
-- [ ] Add callbacks to all buttons
+- [x] Add callbacks to all buttons
 - [ ] Find a way to return callbacks to manage the layout: e.g., startLayout()
 - [ ] Dismount only the element that was hidden and preserve the layout order
 - [ ] Minimize
