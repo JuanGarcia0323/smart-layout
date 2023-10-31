@@ -76,3 +76,4 @@ Your donation won't just be a contribution; it will be a lifeline that enables m
 - [ ] Resize
 - [ ] Group layouts and move groups
 - [ ] Alt tab to navigate between containers and open the selected one in full-screen.
+- [ ] Optimization for rendering performance
