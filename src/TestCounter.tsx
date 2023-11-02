@@ -14,8 +14,8 @@ const TestCounter = ({ showDescription }: { showDescription?: boolean }) => {
         justifyContent: "center",
       }}
     >
-      <button onClick={() => setCounter(counter + 1)}>
-        Click me {counter}
+      <button onClick={() => setCounter(counter + 1)} id="button-test-counter">
+        {counter}
       </button>
       {showDescription && (
         <p>

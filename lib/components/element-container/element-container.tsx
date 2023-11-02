@@ -20,6 +20,7 @@ const ElementContainer = (props: IElementContainer) => {
         styles["element-container-fullscreen-happening"]
       } 
       ${dragging && dragging.id.toString() === props.id && "cursor-pointer"}
+      layout-element-container
       `}
       onClick={() => {
         dragging &&

@@ -52,6 +52,7 @@ const LayoutElement = memo(
           fullScreen?.key === element.key &&
           styles["layout-element-fullscreen-state"]
         }
+        layout-element
       `}
         onClick={(e) => {
           if (element.id === dragging?.id && cancelSelection) {

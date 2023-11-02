@@ -89,15 +89,23 @@ function App() {
             <TestCounter></TestCounter>
             {show && (
               <div
+                id="element"
                 style={{ width: "100%", height: "100%", background: "#000" }}
               ></div>
             )}
 
             <div
+              id="element"
               style={{ width: "100%", height: "100%", background: "#000" }}
             ></div>
 
             <div
+              id="element"
+              style={{ width: "100%", height: "100%", background: "#000" }}
+            ></div>
+
+            <div
+              id="element"
               style={{ width: "100%", height: "100%", background: "#000" }}
             ></div>
           </ComponentLayout>
