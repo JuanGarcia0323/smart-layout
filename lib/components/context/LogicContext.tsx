@@ -4,198 +4,17 @@ import {
   layoutElement,
   IElementContainer,
   direction,
-  orientation,
-  storedLayout,
 } from "../../interfaces";
 import { useState } from "react";
-
-const _version = "1.3.6";
-
-const switchElement = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement
-) => {
-  if (
-    element.id === elementToSwitch.parentId ||
-    element.parentId === elementToSwitch.id
-  ) {
-    return layout;
-  }
-
-  const copyElemenToSwitch = { ...elementToSwitch };
-  elementToSwitch.parentId = element.parentId;
-  element.parentId = copyElemenToSwitch.parentId;
-  const newLayout = layout.map((elementLayout) => {
-    if (elementLayout.id === element.id) {
-      return elementToSwitch;
-    }
-    if (elementLayout.id === elementToSwitch.id) {
-      return element;
-    }
-    return elementLayout;
-  });
-  return newLayout;
-};
-
-const reorganizeItems = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement,
-  parentId: number,
-  elementToSwitchIndex: number,
-  orientation: orientation
-) => {
-  const newElementId = new Date().getTime();
-  const newElement: layoutElement = {
-    id: newElementId,
-    key: `${newElementId}`,
-    orientation,
-    parentId: parentId,
-  };
-  const newLayout = layout.map((e) => {
-    if (e.id === element.id || e.id === elementToSwitch.id) {
-      e.parentId = newElementId;
-    }
-    return e;
-  });
-
-  newLayout.splice(elementToSwitchIndex, 0, newElement);
-  return newLayout;
-};
-
-const moveElement = (
-  layout: dynamicLayout,
-  element: layoutElement,
-  elementToSwitch: layoutElement,
-  directionInsert: direction
-) => {
-  const repositionElement = (
-    layout: dynamicLayout,
-    elementToInsert: layoutElement,
-    direction: direction
-  ) => {
-    const moveElement =
-      direction === "left" || direction === "top"
-        ? indexToSwitch
-          ? -1
-          : 0
-        : +1;
-    element.parentId = elementToSwitch.parentId;
-    const newLayout = layout.filter(
-      (layoutElement) => layoutElement.id !== element.id
-    );
-    newLayout.splice(indexToSwitch + moveElement, 0, elementToInsert);
-    return newLayout;
-  };
-
-  const indexToSwitch = layout.findIndex(
-    (layoutElement) => layoutElement.id === elementToSwitch.id
-  );
-
-  const parentElement = layout.find(
-    (layoutElement) => layoutElement.id === elementToSwitch.parentId
-  );
-
-  if (
-    element.id === elementToSwitch.parentId ||
-    element.parentId === elementToSwitch.id
-  ) {
-    return layout;
-  }
-
-  const repositionedLayout = repositionElement(
-    layout,
-    element,
-    directionInsert
-  );
-
-  if (
-    (directionInsert === "right" || directionInsert === "left") &&
-    (parentElement?.orientation === "vertical" || !parentElement)
-  ) {
-    const reor_i = reorganizeItems(
-      repositionedLayout,
-      element,
-      elementToSwitch,
-      elementToSwitch.parentId,
-      indexToSwitch,
-      "horizontal"
-    );
-    return reor_i;
-  }
-
-  if (
-    (directionInsert === "top" || directionInsert === "bottom") &&
-    (parentElement?.orientation === "horizontal" || !parentElement)
-  ) {
-    const reor_i = reorganizeItems(
-      repositionedLayout,
-      element,
-      elementToSwitch,
-      elementToSwitch.parentId,
-      indexToSwitch,
-      "vertical"
-    );
-    return reor_i;
-  }
-
-  return repositionedLayout;
-};
-
-const balance = (layout: dynamicLayout): dynamicLayout => {
-  const newLayout = layout
-    .map((element) => {
-      const children = layout.filter(
-        (layoutELement) => layoutELement.parentId === element.id
-      );
-
-      if (children.length === 1) {
-        children[0].parentId = element.parentId;
-        return null;
-      }
-
-      return element;
-    })
-    .filter((e) => e);
-  return newLayout as dynamicLayout;
-};
-
-const saveLayout = (layout: dynamicLayout, layoutID: string) => {
-  const layoutToStore: storedLayout = { version: _version, layout };
-  const customLayot = JSON.stringify(layoutToStore);
-  localStorage.setItem(layoutID, customLayot);
-};
-
-const convertChildrenToLayout = (
-  id: number,
-  layoutId: string,
-  name?: string | number
-): layoutElement => {
-  const newObject: layoutElement = {
-    id: id,
-    key: id.toString() + layoutId,
-    orientation: "horizontal",
-    parentId: -1,
-    name,
-  };
-
-  return newObject;
-};
-
-const convertChildrenToElementContainer = (
-  children: ReactNode,
-  id: number,
-  layoutId: string
-): IElementContainer => {
-  const newObject: IElementContainer = {
-    element: children,
-    key: (id * 2).toString(),
-    id: id.toString() + layoutId,
-    layoutId,
-  };
-  return newObject;
-};
+import {
+  convertChildrenToElementContainer,
+  convertChildrenToLayout,
+  balance,
+  switchElement,
+  saveLayout,
+  moveElement,
+  _version,
+} from "../../LogicLayout";
 
 // Custom-hook
 const LogicContext = () => {
@@ -289,18 +108,6 @@ const LogicContext = () => {
     [layout, setter]
   );
 
-  const deleteFromLayout = useCallback(
-    (layout: dynamicLayout, element: layoutElement) => {
-      setter(
-        layout.filter((e) => {
-          return e.id !== element.id;
-        })
-      );
-      setFullScreen(undefined);
-    },
-    [setter]
-  );
-
   const handleFullScreen = (element: layoutElement) => {
     if (fullScreen?.id === element.id) {
       setFullScreen(undefined);
@@ -330,7 +137,6 @@ const LogicContext = () => {
     fullScreen,
     handleFullScreen,
     cancelSelection,
-    deleteFromLayout,
     moveToTheTop,
     handleSwitch,
     handleMove,

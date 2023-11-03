@@ -24,7 +24,7 @@ const MenuBar = ({
         {children}
         {!!onClickMove && (
           <button
-            className={`${styles["menubar-button-swap"]} ${styles["menubar-button-default"]}`}
+            className={`${styles["menubar-button-swap"]} ${styles["menubar-button-default"]} button-swap-layout`}
             onClick={onClickMove}
             disabled={disableMove}
           >
@@ -33,7 +33,7 @@ const MenuBar = ({
         )}
         {!!onClickFullScreen && (
           <button
-            className={styles["menubar-button-default"]}
+            className={`${styles["menubar-button-default"]} button-fullscreen-layout `}
             onClick={onClickFullScreen}
             disabled={disableFullScreen}
           >
@@ -42,7 +42,7 @@ const MenuBar = ({
         )}
         {!!moveToTheTop && (
           <button
-            className={styles["menubar-button-default"]}
+            className={`${styles["menubar-button-default"]} button-moveToTheTop-layout `}
             onClick={moveToTheTop}
             disabled={disableMoveToTheTop}
           >
@@ -51,7 +51,7 @@ const MenuBar = ({
         )}
         {!!onClickClose && (
           <button
-            className={`${styles["menubar-button-default"]}`}
+            className={`${styles["menubar-button-default"]} button-delete-layout `}
             onClick={onClickClose}
             disabled={disableClose}
           >
