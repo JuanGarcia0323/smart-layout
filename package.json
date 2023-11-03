@@ -46,7 +46,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "version": "npm run build && auto-changelog -p && git add CHANGELOG.md",
-    "test": "jest --ci --testResultsProcessor=jest-junit"
+    "test": "jest --ci --testResultsProcessor=jest-junit",
+    "test:integration": "jest integration",
+    "coverage": "npx jest --coverage"
   },
   "peerDependencies": {
     "react": "^18.2.0",

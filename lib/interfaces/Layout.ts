@@ -36,7 +36,6 @@ interface actionsContext {
     directionInsert: direction
   ) => void;
   moveToTheTop: (element: layoutElement) => void;
-  deleteFromLayout: (layout: dynamicLayout, element: layoutElement) => void;
   handleFullScreen: (element: layoutElement) => void;
   cancelSelection: () => void;
   saveLayout: (layout: dynamicLayout, layoutID: string) => void;
