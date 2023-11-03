@@ -10,6 +10,7 @@
     "type": "git",
     "url": "https://github.com/JuanGarcia0323/smart-layout"
   },
+  "homepage": "https://smart-layout-documentation.netlify.app/",
   "files": [
     "dist"
   ],

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699034392085" clover="3.2.0">
-  <project timestamp="1699034392085" name="All files">
+<coverage generated="1699036147904" clover="3.2.0">
+  <project timestamp="1699036147904" name="All files">
     <metrics statements="62" coveredstatements="62" conditionals="25" coveredconditionals="23" methods="16" coveredmethods="16" elements="103" coveredelements="101" complexity="0" loc="62" ncloc="62" packages="1" files="1" classes="1"/>
     <file name="LogicLayout.ts" path="C:\Users\thepr\OneDrive\Escritorio\smart-layout\lib\LogicLayout.ts">
       <metrics statements="62" coveredstatements="62" conditionals="25" coveredconditionals="23" methods="16" coveredmethods="16"/>
@@ -36,9 +36,9 @@
       <line num="88" count="4" type="stmt"/>
       <line num="89" count="4" type="stmt"/>
       <line num="92" count="5" type="stmt"/>
-      <line num="93" count="36" type="stmt"/>
+      <line num="93" count="16" type="stmt"/>
       <line num="96" count="5" type="stmt"/>
-      <line num="97" count="38" type="stmt"/>
+      <line num="97" count="33" type="stmt"/>
       <line num="100" count="5" type="cond" truecount="1" falsecount="0"/>
       <line num="104" count="1" type="stmt"/>
       <line num="107" count="4" type="stmt"/>
