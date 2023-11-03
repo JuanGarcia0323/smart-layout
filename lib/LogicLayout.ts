@@ -8,7 +8,7 @@ import {
 } from "./interfaces";
 import { ReactNode } from "react";
 
-export const _version = "1.3.6";
+export const _version = "1.4.1";
 
 export const switchElement = (
   layout: dynamicLayout,
