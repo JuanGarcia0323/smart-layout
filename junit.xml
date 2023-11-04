@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="2.712">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-03T18:29:05" time="2.6" tests="9">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.754">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-03T21:32:21" time="1.611" tests="9">
     <testcase classname=" switch elements" name=" switch elements" time="0.003">
     </testcase>
     <testcase classname=" switch element with id === parentId" name=" switch element with id === parentId" time="0.001">
     </testcase>
     <testcase classname=" reorganize items" name=" reorganize items" time="0.001">
     </testcase>
-    <testcase classname=" move element" name=" move element" time="0.001">
+    <testcase classname=" move element" name=" move element" time="0.002">
     </testcase>
     <testcase classname=" move elements with id === parentId" name=" move elements with id === parentId" time="0.001">
     </testcase>
