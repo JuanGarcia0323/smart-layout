@@ -22,7 +22,7 @@ React Smart-Layout is a cutting-edge React library designed to effortlessly gene
 
 Give your users the ultimate layout experience and elevate your UI with React Smart-Layout! 🌐
 
-## Example:
+## Basic Example:
 
 It's really easy to use, you just need to import the `ComponentLayout`
 and add your children
@@ -43,14 +43,6 @@ import { ComponentLayout } from "smart-layout";
 
 ![Alt Text](ezgif.com-video-to-gif.gif)
 
-# 🚀 **Experience Smart-layout in Real-time!** 🚀
-
-Dive into the interactive world of `Smart-layout` without any setup hassles! We've set up a live demo for you on StackBlitz. It's the perfect platform to experiment, tweak, and see our library in action.
-
-Whether you're curious about its capabilities or just want to play around, StackBlitz offers an immediate, hands-on experience.
-
-⚡ [Try Smart-layout on StackBlitz Now!](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
-
 🔍 **Ready to Elevate Your Layout Game? Explore Our Documentation!**
 
 Embark on a journey through the comprehensive documentation of **Smart-layout** and unlock the full potential of your web designs. Our guides are meticulously crafted to provide you with deep insights, practical knowledge, and a plethora of examples to enhance your mastery over dynamic layouts.
@@ -64,6 +56,14 @@ Embark on a journey through the comprehensive documentation of **Smart-layout** 
 So, what are you waiting for? Dive into the **Smart-layout** documentation now and transform the way you create web experiences!
 
 [Start Exploring the Documentation](https://smart-layout-documentation.netlify.app/)
+
+# 🚀 **Experience Smart-layout in Real-time!** 🚀
+
+Dive into the interactive world of `Smart-layout` without any setup hassles! We've set up a live demo for you on StackBlitz. It's the perfect platform to experiment, tweak, and see our library in action.
+
+Whether you're curious about its capabilities or just want to play around, StackBlitz offers an immediate, hands-on experience.
+
+⚡ [Try Smart-layout on StackBlitz Now!](https://stackblitz.com/edit/stackblitz-starters-wo6bmb?file=src%2FApp.tsx)
 
 # 👨‍💻 **Support a Passionate Young Developer!** 👨‍💻
 
