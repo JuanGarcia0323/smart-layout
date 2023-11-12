@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.687">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-04T02:02:40" time="1.594" tests="9">
-    <testcase classname=" switch elements" name=" switch elements" time="0.002">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.833">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-05T15:55:41" time="1.707" tests="9">
+    <testcase classname=" switch elements" name=" switch elements" time="0.003">
     </testcase>
-    <testcase classname=" switch element with id === parentId" name=" switch element with id === parentId" time="0">
+    <testcase classname=" switch element with id === parentId" name=" switch element with id === parentId" time="0.001">
     </testcase>
-    <testcase classname=" reorganize items" name=" reorganize items" time="0">
+    <testcase classname=" reorganize items" name=" reorganize items" time="0.001">
     </testcase>
     <testcase classname=" move element" name=" move element" time="0.001">
     </testcase>
-    <testcase classname=" move elements with id === parentId" name=" move elements with id === parentId" time="0.001">
+    <testcase classname=" move elements with id === parentId" name=" move elements with id === parentId" time="0">
     </testcase>
     <testcase classname=" move element into reorganized container" name=" move element into reorganized container" time="0.001">
     </testcase>
-    <testcase classname=" balance layout" name=" balance layout" time="0">
+    <testcase classname=" balance layout" name=" balance layout" time="0.001">
     </testcase>
     <testcase classname=" save layout on local-storage" name=" save layout on local-storage" time="0">
     </testcase>
