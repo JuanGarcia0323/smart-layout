@@ -4,18 +4,20 @@ import {
   layoutElement,
   IElementContainer,
   direction,
+  customLayout,
 } from "../../interfaces";
 import { useState } from "react";
 import {
-  convertChildrenToElementContainer,
-  convertChildrenToLayout,
   balance,
   switchElement,
   saveLayout,
   moveElement,
   _version,
+  createLayout,
+  restoreLayout,
 } from "../../LogicLayout";
 
+const reLayout = restoreLayout();
 // Custom-hook
 const LogicContext = () => {
   const [layout, setLayout] = useState<dynamicLayout>([]);
@@ -25,29 +27,25 @@ const LogicContext = () => {
   const [layoutID, setLayoutID] = useState<string>();
 
   const startLayout = useCallback(
-    (children: ReactNode, id: string, names?: string[] | number[]) => {
-      if (!children) {
-        setLayout([]);
-        setElements([]);
-        return;
+    (
+      children: ReactNode,
+      id: string,
+      customLayout?: customLayout,
+      names?: string[] | number[]
+    ) => {
+      if (children) {
+        setLayoutID(id);
       }
-      setLayoutID(id);
-      if (!Array.isArray(children)) {
-        setElements([convertChildrenToElementContainer(children, 1, id)]);
-        setLayout([convertChildrenToLayout(1, id, names?.[0])]);
-        return;
-      }
-      const newLayout: dynamicLayout = [];
-      const newElements: IElementContainer[] = [];
-      children.forEach((element, i) => {
-        if (!element) {
-          return;
-        }
-        newLayout.push(convertChildrenToLayout(i, id, names?.[i]));
-        newElements.push(convertChildrenToElementContainer(element, i, id));
-      });
-      setLayout(newLayout);
-      setElements(newElements);
+      const newLayout = createLayout(children, id, names);
+      const restoredLayout = reLayout(
+        children,
+        newLayout.layout,
+        id,
+        customLayout,
+        names
+      );
+      setLayout(restoredLayout);
+      setElements(newLayout.elements);
     },
     []
   );

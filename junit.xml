@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.833">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-05T15:55:41" time="1.707" tests="9">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="2.912">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2023-11-13T18:04:49" time="2.818" tests="9">
     <testcase classname=" switch elements" name=" switch elements" time="0.003">
     </testcase>
     <testcase classname=" switch element with id === parentId" name=" switch element with id === parentId" time="0.001">

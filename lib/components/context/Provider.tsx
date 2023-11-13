@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from "react";
 import LayoutContext from "./Context";
 import { IContextStore } from "../../interfaces";
-import LogicContext from "./LogicContext";
+import LogicContext from "./LogicContext.tsx";
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
   const {

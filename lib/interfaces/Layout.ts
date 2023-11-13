@@ -20,6 +20,7 @@ interface actionsContext {
   startLayout: (
     children: ReactNode,
     id: string,
+    customLayot?: customLayout,
     names?: string[] | number[]
   ) => void;
   setLayout: (layout: dynamicLayout) => void;
@@ -39,6 +40,7 @@ interface actionsContext {
   handleFullScreen: (element: layoutElement) => void;
   cancelSelection: () => void;
   saveLayout: (layout: dynamicLayout, layoutID: string) => void;
+  balance: (layout: dynamicLayout) => dynamicLayout;
 }
 
 interface IContextStore {

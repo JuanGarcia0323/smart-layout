@@ -13,6 +13,7 @@ interface layoutElement {
   orientation: orientation;
   className?: string;
   name?: string | number;
+  original?: boolean;
 }
 
 interface IPropsGridLayout {
