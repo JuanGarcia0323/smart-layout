@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ComponentLayout } from "../lib/main";
 import { customLayout } from "../lib/interfaces";
-import TestCounter from "./TestCounter";
+// import TestCounter from "./TestCounter";
+import TestCase from "./TestCase";
 function App() {
   const [layout, setLayout] = useState<customLayout>();
   const [show, setShow] = useState(true);
@@ -83,30 +84,10 @@ function App() {
             config={{
               classNameLayoutElement: "test",
               customLayout: layout,
+              onClose: (e) => console.log(e),
             }}
           >
-            <TestCounter></TestCounter>
-            {show && (
-              <div
-                id="element"
-                style={{ width: "100%", height: "100%", background: "#000" }}
-              ></div>
-            )}
-
-            <div
-              id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
-            ></div>
-
-            <div
-              id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
-            ></div>
-
-            <div
-              id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
-            ></div>
+            {TestCase({ show })}
           </ComponentLayout>
         </div>
       </div>
