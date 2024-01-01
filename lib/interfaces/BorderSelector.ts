@@ -1,12 +1,12 @@
 import { CSSProperties } from "react";
-import { direction } from ".";
+import { positions } from ".";
 
 type stylesForDirection = {
-  [key in direction]: string;
+  [key in positions]: string;
 };
 
 interface IPropsBorderSelector {
-  position: direction;
+  position: positions;
   action: () => void;
   className?: string;
   customStyle?: CSSProperties;

@@ -22,17 +22,34 @@ const GridLayout = (props: IPropsGridLayout) => {
    * @param {dynamicLayout} layout
    * @param {number} parentId
    */
+  // const unfoldData = useCallback(
+  //   (layout: dynamicLayout, parentId = -1) => {
+  //     const parents = layout.filter((element) => element.parentId === parentId);
+  //     return parents.map((element) => {
+  //       const childrens = unfoldData(layout, element.id);
+  //       return (
+  //         <LayoutElement
+  //           config={props.config}
+  //           key={element.key}
+  //           childrens={childrens}
+  //           element={element}
+  //         />
+  //       );
+  //     });
+  //   },
+  //   [props.config]
+  // );
+
   const unfoldData = useCallback(
-    (layout: dynamicLayout, parentId = -1) => {
-      const parents = layout.filter((element) => element.parentId === parentId);
-      return parents.map((element) => {
-        const childrens = unfoldData(layout, element.id);
+    (layout: dynamicLayout) => {
+      return layout.map((e) => {
+        const children = unfoldData(e.children);
         return (
           <LayoutElement
+            element={e}
+            childrens={children}
             config={props.config}
-            key={element.key}
-            childrens={childrens}
-            element={element}
+            key={e.key}
           />
         );
       });

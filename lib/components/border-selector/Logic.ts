@@ -1,7 +1,7 @@
-import { direction, stylesForDirection } from "../../interfaces";
+import { positions, stylesForDirection } from "../../interfaces";
 import styles from "./styles.module.css";
 const Logic = () => {
-  const handlePosition = (position: direction) => {
+  const handlePosition = (position: positions) => {
     const stylesForDirection: stylesForDirection = {
       right: `${styles["right-border-selector"]} right-border-selector-layout`,
       left: `${styles["left-border-selector"]} left-border-selector-layout`,

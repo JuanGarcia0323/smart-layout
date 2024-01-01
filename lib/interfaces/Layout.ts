@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import { IElementContainer, dynamicLayout, layoutElement, direction } from ".";
+import { IElementContainer, dynamicLayout, layoutElement, positions } from ".";
+import { saveLayout } from "../LogicLayout";
 
 type posibleMovement = "horizontal" | "vertical";
 
@@ -23,22 +24,16 @@ interface actionsContext {
     names?: string[] | number[]
   ) => void;
   setLayout: (layout: dynamicLayout) => void;
-  moveElement: (
-    layout: dynamicLayout,
-    element: layoutElement,
-    elementToSwitch: layoutElement,
-    directionInsert: direction
-  ) => dynamicLayout;
-  handleSwitch: (element: layoutElement) => void;
   handleMove: (
     dragging: layoutElement,
     element: layoutElement,
-    directionInsert: direction
+    directionInsert: positions
   ) => void;
+  handleSwitch: (element: layoutElement) => void;
   moveToTheTop: (element: layoutElement) => void;
   handleFullScreen: (element: layoutElement) => void;
   cancelSelection: () => void;
-  saveLayout: (layout: dynamicLayout, layoutID: string) => void;
+  saveLayout: typeof saveLayout;
 }
 
 interface IContextStore {

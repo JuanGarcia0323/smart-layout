@@ -73,13 +73,13 @@ const LayoutElement = memo(
               }
               moveToTheTop={moveTop && (() => moveTop(element))}
               disableMoveToTheTop={
-                element.parentId === -1 || disableMoveToTheTop
+                element.direction.length === 1 || disableMoveToTheTop
               }
               disableFullScreen={!!dragging || disableFullscreen}
               disableClose={!!fullScreen || !!dragging || disableClose}
               disableMove={
                 !!fullScreen ||
-                (element.parentId === -1 && layout?.length < 2) ||
+                (element.direction.length === 1 && layout?.length < 2) ||
                 disableMove
               }
             />
@@ -124,7 +124,8 @@ const LayoutElement = memo(
         {!!childrens?.length &&
           dragging &&
           childrens.length > 1 &&
-          dragging.parentId !== element.id && (
+          dragging.direction.slice(0, dragging.direction.length - 1) !==
+            element.direction.slice(0, element.direction.length - 1) && (
             <>
               {(!limitMovement || limitMovement === "vertical") && (
                 <>

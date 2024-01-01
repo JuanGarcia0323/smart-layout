@@ -3,17 +3,18 @@ import {
   dynamicLayout,
   layoutElement,
   IElementContainer,
-  direction,
+  positions,
 } from "../../interfaces";
 import { useState } from "react";
 import {
   convertChildrenToElementContainer,
   convertChildrenToLayout,
-  balance,
-  switchElement,
-  saveLayout,
-  moveElement,
   _version,
+  saveLayout,
+  switchNode,
+  moveNodes,
+  moveToTheTop,
+  assignDirections,
 } from "../../LogicLayout";
 
 // Custom-hook
@@ -24,6 +25,7 @@ const LogicContext = () => {
   const [fullScreen, setFullScreen] = useState<layoutElement>();
   const [layoutID, setLayoutID] = useState<string>();
 
+  console.log(layout);
   const startLayout = useCallback(
     (children: ReactNode, id: string, names?: string[] | number[]) => {
       if (!children) {
@@ -34,7 +36,9 @@ const LogicContext = () => {
       setLayoutID(id);
       if (!Array.isArray(children)) {
         setElements([convertChildrenToElementContainer(children, 1, id)]);
-        setLayout([convertChildrenToLayout(1, id, names?.[0])]);
+        setLayout(
+          assignDirections([convertChildrenToLayout(1, id, names?.[0])])
+        );
         return;
       }
       const newLayout: dynamicLayout = [];
@@ -46,7 +50,7 @@ const LogicContext = () => {
         newLayout.push(convertChildrenToLayout(i, id, names?.[i]));
         newElements.push(convertChildrenToElementContainer(element, i, id));
       });
-      setLayout(newLayout);
+      setLayout(assignDirections(newLayout));
       setElements(newElements);
     },
     []
@@ -57,9 +61,8 @@ const LogicContext = () => {
       if (!layoutID) {
         return;
       }
-      const balancedLayout = balance(newLayout);
-      saveLayout(balancedLayout, layoutID);
-      setLayout(balancedLayout);
+      saveLayout(newLayout, layoutID);
+      setLayout(Array.from(newLayout));
     },
     [layoutID, setLayout]
   );
@@ -68,23 +71,23 @@ const LogicContext = () => {
     (element: layoutElement) => {
       if (dragging && layoutID) {
         setDragging(undefined);
-        const switchedElement = switchElement(layout, element, dragging);
+        const switchedElement = switchNode(layout, element, dragging);
         saveLayout(switchedElement, layoutID);
-        setLayout(switchedElement);
+        setter(switchedElement);
         return;
       }
       setDragging(element);
     },
-    [dragging, layout, layoutID, setLayout]
+    [dragging, layout, layoutID, setter]
   );
 
   const handleMove = useCallback(
     (
       dragging: layoutElement,
       element: layoutElement,
-      directionInsert: direction
+      directionInsert: positions
     ) => {
-      const reorganizedElements = moveElement(
+      const reorganizedElements = moveNodes(
         layout,
         dragging,
         element,
@@ -96,14 +99,9 @@ const LogicContext = () => {
     [layout, setter]
   );
 
-  const moveToTheTop = useCallback(
-    (element?: layoutElement) => {
-      if (!element) {
-        return;
-      }
-      element.parentId = -1;
-      setter(Array.from(layout));
-      setDragging(undefined);
+  const toTheTop = useCallback(
+    (element: layoutElement) => {
+      setter(moveToTheTop(layout, element.direction));
     },
     [layout, setter]
   );
@@ -127,9 +125,9 @@ const LogicContext = () => {
     elements,
     startLayout,
     setElements,
-    switchElement,
-    moveElement,
-    balance,
+    switchNode,
+    moveToTheTop: toTheTop,
+    moveNodes,
     saveLayout,
     setDragging,
     dragging,
@@ -137,7 +135,6 @@ const LogicContext = () => {
     fullScreen,
     handleFullScreen,
     cancelSelection,
-    moveToTheTop,
     handleSwitch,
     handleMove,
     _version,
