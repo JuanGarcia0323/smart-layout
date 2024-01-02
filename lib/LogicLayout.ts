@@ -22,14 +22,14 @@ export const assignDirections = (
 ) => {
   tree.forEach((e, i) => {
     const currentdirection = [...direction, i];
-    if (e.children.length < 1 && !e.original) {
+    if (!e?.children.length && !e.original) {
       tree.splice(i, 1);
       return;
     }
-    if (e.children.length === 1 && !e.original) {
+    if (e?.children.length === 1 && !e.original) {
       tree[i].children[0].direction = currentdirection;
       tree[i] = tree[i].children[0];
-      return;
+      return assignDirections(tree[i].children, currentdirection);
     }
     assignDirections(e.children, currentdirection);
     e.direction = currentdirection;
@@ -97,15 +97,14 @@ export const insertNode = (
   orientation: "horizontal" | "vertical",
   deleteCount = 0
 ): dynamicLayout => {
-  debugger;
   const newId = new Date().getTime();
   const newNode: layoutElement = {
-    direction,
     id: newId,
     key: newId.toString(),
     orientation,
     original: false,
     children: children,
+    direction,
   };
   const lastDirection = direction[direction.length - 1];
   if (direction.length === 1) {
@@ -119,25 +118,6 @@ export const insertNode = (
   return assignDirections(childrenClosestParent.children, parentDirection);
 };
 
-// ================ Move Nodes V1 ================
-// export const moveNodes = (
-//   tree: dynamicLayout,
-//   directionNode: direction,
-//   directionSwitch: direction,
-//   position: positions
-// ) => {
-//   const orientation =
-//     position === "bottom" || position === "top" ? "vertical" : "horizontal";
-//   const directions = [[...directionSwitch], [...directionNode]].sort((a, b) =>
-//     a.reduce((a, b, i) => a + b + i) < b.reduce((a, b, i) => a + b + i) ? 1 : -1
-//   );
-//   debugger;
-//   const nodes = directions.map((direction) => removeNode(tree, direction));
-
-//   return insertNode(tree, nodes, directionSwitch, orientation);
-// };
-
-// ================ Move Nodes V1 ================
 export const moveNodes = (
   tree: dynamicLayout,
   node: layoutElement,
@@ -146,14 +126,6 @@ export const moveNodes = (
 ) => {
   const orientation =
     position === "bottom" || position === "top" ? "vertical" : "horizontal";
-  // const nodes = [node, switchNode].sort((a, b) =>
-  //   a.direction.reduce((a, b, i) => a + b + i) <
-  //   b.direction.reduce((a, b, i) => a + b + i)
-  //     ? 1
-  //     : -1
-  // );
-  // debugger;
-  // const nodes = directions.map((direction) => removeNode(tree, direction));
   const nodeDirection = [...node.direction];
   insertNode(tree, [node, switchNode], switchNode.direction, orientation, 1);
   removeNode(tree, nodeDirection);
@@ -163,7 +135,7 @@ export const moveNodes = (
 export const moveToTheTop = (tree: dynamicLayout, directionNode: direction) => {
   const node = removeNode(tree, directionNode);
   tree.push(node);
-  return tree;
+  return assignDirections(tree);
 };
 
 export const saveLayout = (layout: dynamicLayout, layoutId: string) => {

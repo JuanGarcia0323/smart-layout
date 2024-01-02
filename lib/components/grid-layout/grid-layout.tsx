@@ -43,7 +43,7 @@ const GridLayout = (props: IPropsGridLayout) => {
   const unfoldData = useCallback(
     (layout: dynamicLayout) => {
       return layout.map((e) => {
-        const children = unfoldData(e.children);
+        const children = unfoldData(e?.children);
         return (
           <LayoutElement
             element={e}
