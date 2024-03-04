@@ -4,6 +4,7 @@ import {
   direction,
   IElementContainer,
   positions,
+  orientation,
 } from "./interfaces";
 import { ReactNode } from "react";
 
@@ -30,6 +31,18 @@ export const assignDirections = (
       tree[i].children[0].direction = currentdirection;
       tree[i] = tree[i].children[0];
       return assignDirections(tree[i].children, currentdirection);
+    }
+
+    if (e.children.length > 1) {
+      const deeperChildren = e.children
+        .map((c) => {
+          if (c.children.length > 0 && c.orientation === e.orientation) {
+            return c.children;
+          }
+          return c;
+        })
+        .flat();
+      e.children = deeperChildren;
     }
     assignDirections(e.children, currentdirection);
     e.direction = currentdirection;
@@ -90,31 +103,47 @@ export const switchNode = (
   return tree;
 };
 
-export const insertNode = (
-  tree: dynamicLayout,
-  children: dynamicLayout,
+export const generateNode = (
+  orientation: orientation,
   direction: direction,
-  orientation: "horizontal" | "vertical",
-  deleteCount = 0
-): dynamicLayout => {
+  children?: dynamicLayout
+): layoutElement => {
   const newId = new Date().getTime();
   const newNode: layoutElement = {
     id: newId,
     key: newId.toString(),
     orientation,
     original: false,
-    children: children,
+    children: children ?? [],
     direction,
   };
+  return newNode;
+};
+
+export const insertNode = (
+  tree: dynamicLayout,
+  node: layoutElement,
+  direction: direction,
+  deleteCount = 0
+): dynamicLayout => {
   const lastDirection = direction[direction.length - 1];
   if (direction.length === 1) {
-    tree.splice(lastDirection, deleteCount, newNode);
+    tree.splice(lastDirection, deleteCount, node);
     return assignDirections(tree);
   }
   const parentDirection = getBeforeDirection(direction);
   const childrenClosestParent = navigateThrough(tree, [...parentDirection]);
 
-  childrenClosestParent.children.splice(lastDirection, deleteCount, newNode);
+  // if (childrenClosestParent.orientation === node.orientation) {
+  //   const nodeInsert = node.children.find(
+  //     (n) => !childrenClosestParent.children.find((e) => e.id === n.id)
+  //   );
+
+  //   childrenClosestParent.children.splice(lastDirection, deleteCount, node);
+  //   return assignDirections(childrenClosestParent.children, parentDirection);
+  // }
+
+  childrenClosestParent.children.splice(lastDirection, deleteCount, node);
   return assignDirections(childrenClosestParent.children, parentDirection);
 };
 
@@ -127,14 +156,19 @@ export const moveNodes = (
   const orientation =
     position === "bottom" || position === "top" ? "vertical" : "horizontal";
   const nodeDirection = [...node.direction];
-  insertNode(tree, [node, switchNode], switchNode.direction, orientation, 1);
+  const childrenNode = [node, switchNode].sort(() =>
+    position === "right" || position === "bottom" ? -1 : 1
+  );
+  const newNode = generateNode(orientation, switchNode.direction, childrenNode);
+  insertNode(tree, newNode, switchNode.direction, 1);
   removeNode(tree, nodeDirection);
   return assignDirections(tree);
 };
 
 export const moveToTheTop = (tree: dynamicLayout, directionNode: direction) => {
   const node = removeNode(tree, directionNode);
-  tree.push(node);
+  const position = directionNode[directionNode.length - 1] > 0 ? 1 : 0;
+  tree.splice(directionNode[0] + position, 0, node);
   return assignDirections(tree);
 };
 

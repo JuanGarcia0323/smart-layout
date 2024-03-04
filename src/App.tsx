@@ -102,17 +102,17 @@ function App() {
 
             <div
               id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
+              style={{ width: "100%", height: "100%", background: "red" }}
             ></div>
 
             <div
               id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
+              style={{ width: "100%", height: "100%", background: "green" }}
             ></div>
 
             <div
               id="element"
-              style={{ width: "100%", height: "100%", background: "#000" }}
+              style={{ width: "100%", height: "100%", background: "violet" }}
             ></div>
           </ComponentLayout>
         </div>

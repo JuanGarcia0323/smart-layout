@@ -25,7 +25,6 @@ const LogicContext = () => {
   const [fullScreen, setFullScreen] = useState<layoutElement>();
   const [layoutID, setLayoutID] = useState<string>();
 
-  console.log(layout);
   const startLayout = useCallback(
     (children: ReactNode, id: string, names?: string[] | number[]) => {
       if (!children) {
