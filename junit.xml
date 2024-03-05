@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.824">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-03-05T17:27:53" time="1.721" tests="9">
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="3.107">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-03-05T17:38:32" time="3.007" tests="9">
     <testcase classname=" switch elements" name=" switch elements" time="0.002">
     </testcase>
     <testcase classname=" switch element with id === parentId" name=" switch element with id === parentId" time="0.001">
     </testcase>
-    <testcase classname=" reorganize items" name=" reorganize items" time="0.001">
+    <testcase classname=" reorganize items" name=" reorganize items" time="0">
     </testcase>
     <testcase classname=" move element" name=" move element" time="0.001">
     </testcase>
@@ -17,7 +17,7 @@
     </testcase>
     <testcase classname=" save layout on local-storage" name=" save layout on local-storage" time="0">
     </testcase>
-    <testcase classname=" Convert children to element container" name=" Convert children to element container" time="0">
+    <testcase classname=" Convert children to element container" name=" Convert children to element container" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

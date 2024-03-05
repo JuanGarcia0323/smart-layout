@@ -34,7 +34,6 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
       return;
     }
     const childrenLength = children.filter((e) => e).length;
-    debugger;
     if (
       customLayout?.layout &&
       customLayout.name !== lastCustomLayout &&
