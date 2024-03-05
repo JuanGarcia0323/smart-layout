@@ -34,6 +34,7 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
       return;
     }
     const childrenLength = children.filter((e) => e).length;
+    debugger;
     if (
       customLayout?.layout &&
       customLayout.name !== lastCustomLayout &&
@@ -63,7 +64,8 @@ const Logic = ({ layoutID, children, config }: IPropsGridLayout) => {
     );
     if (
       (config?.elementsNames?.length && !originalElementLayout[0].name) ||
-      config?.elementsNames?.length !== childrenLength
+      (!!config?.elementsNames?.length &&
+        config?.elementsNames?.length !== childrenLength)
     ) {
       localStorage.removeItem(layoutID);
       return;

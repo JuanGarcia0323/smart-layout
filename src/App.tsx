@@ -78,14 +78,7 @@ function App() {
           </button>
         </div>
         <div className="container">
-          <ComponentLayout
-            id="starting-layout"
-            config={{
-              classNameLayoutElement: "test",
-              elementsNames: elements,
-              customLayout: layout,
-            }}
-          >
+          <ComponentLayout id="starting-layout">
             <TestCounter></TestCounter>
             {show && (
               <div
